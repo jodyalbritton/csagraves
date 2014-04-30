@@ -1,0 +1,19 @@
+development: 
+   adapter: mysql2
+   encoding: utf8 
+   database: example 
+   pool: 10 
+   username: root 
+   password: ddktx1999 
+   socket: /var/run/mysqld/mysqld.sock 
+   reconnect: true
+
+production: 
+   adapter: mysql2
+   encoding: utf8 
+   database: example 
+   pool: 10 
+   username: root 
+   password: ddktx1999 
+   socket: /var/run/mysqld/mysqld.sock 
+   reconnect: true

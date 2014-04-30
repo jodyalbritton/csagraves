@@ -1,0 +1,45 @@
+<%- model_class = Plot -%>
+<div class="page-header">
+  <% if params[:cemetery_id].present? %>
+
+  <h1><%=@cemetery.name%></h1>
+  <% else %>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <% end %>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:last_name) %></th>
+      <th><%= model_class.human_attribute_name(:first_name) %></th>
+      <th><%= model_class.human_attribute_name(:middle_name) %></th>
+      <th><%= model_class.human_attribute_name(:birth) %></th>
+      <th><%= model_class.human_attribute_name(:death) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @plots.each do |plot| %>
+      <tr>
+        <td><%= link_to plot.last_name, cemetery_plot_path(plot.cemetery, plot) %></td>
+        <td><%= plot.first_name %></td>
+        <td><%= plot.middle_name %></td>
+        <td><%= plot.birth_date %></td>
+        <td><%= plot.death_date %></td>
+        <td><%= plot.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_cemetery_plot_path(plot.cemetery, plot), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      cemetery_plot_path(plot.cemetery, plot),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

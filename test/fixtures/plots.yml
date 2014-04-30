@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  rank: MyString
+  birth: 2014-04-26
+  death: 2014-04-26
+  cemetery_id: 
+  created_by_id: 
+  approved: false
+  unit: MyString
+  description: MyText
+  spouse: MyString
+  mother: MyString
+  father: MyString
+  find_a_grave: MyString
+
+two:
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  rank: MyString
+  birth: 2014-04-26
+  death: 2014-04-26
+  cemetery_id: 
+  created_by_id: 
+  approved: false
+  unit: MyString
+  description: MyText
+  spouse: MyString
+  mother: MyString
+  father: MyString
+  find_a_grave: MyString

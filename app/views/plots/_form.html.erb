@@ -1,0 +1,93 @@
+<%= form_for ([@cemetery, @plot]), :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :first_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :first_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :middle_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :middle_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :last_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :last_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :rank, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :rank, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :birth, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :birth_date, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :death, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :death_date, :class => 'text_field' %>
+    </div>
+  </div>
+ 
+  <div class="control-group">
+    <%= f.label :created_by_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :created_by_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :approved, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :approved, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :unit, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :unit, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :spouse, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :spouse, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :mother, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :mother, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :father, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :father, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :find_a_grave, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :find_a_grave, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                cemetery_plots_path(@cemetery), :class => 'btn' %>
+  </div>
+<% end %>
