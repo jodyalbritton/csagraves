@@ -1,45 +1,96 @@
 <%- model_class = Plot -%>
-<div class="page-header">
-  <% if params[:cemetery_id].present? %>
-
-  <h1><%=@cemetery.name%></h1>
+ <div class="container">
+ <% if params[:query]%>
+    <hgroup class="mb20">
+      <h1>Search Results</h1>
+      <h2 class="lead"><strong class="text-danger"><%= @plots.size%></strong> results were found for the search for <strong class="text-danger"><%= params[:query]%></strong> </h2>   
+    </hgroup>
   <% else %>
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <hgroup class="mb20">
+      <h1>Search Results</h1>
+      <h2 class="lead"><strong class="text-danger"><%= @plots.size%></strong> plots were found in <strong class="text-danger"><%= @cemetery.name%></strong></h2>   
+  </hgroup>
   <% end %>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:last_name) %></th>
-      <th><%= model_class.human_attribute_name(:first_name) %></th>
-      <th><%= model_class.human_attribute_name(:middle_name) %></th>
-      <th><%= model_class.human_attribute_name(:birth) %></th>
-      <th><%= model_class.human_attribute_name(:death) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @plots.each do |plot| %>
-      <tr>
-        <td><%= link_to plot.last_name, cemetery_plot_path(plot.cemetery, plot) %></td>
-        <td><%= plot.first_name %></td>
-        <td><%= plot.middle_name %></td>
-        <td><%= plot.birth_date %></td>
-        <td><%= plot.death_date %></td>
-        <td><%= plot.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_cemetery_plot_path(plot.cemetery, plot), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      cemetery_plot_path(plot.cemetery, plot),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
+<section class="col-xs-12 col-sm-6 col-md-12">
+<% if params[:query].present? %>
+ 
+
+ 
+
+
+     <% @plots.each do |plot| %>
+      
+     <% @plot_photo = Attachment.where(:imageable_id => plot._source.id) %>
+    <article class="search-result row">
+      <div class="col-xs-12 col-sm-12 col-md-3">
+          <% unless @plot_photo.first == nil%>
+            <a href="#" title="Lorem ipsum" class="thumbnail"><%= image_tag @plot_photo.first.photo(:small) %></a>
+          <% else %>
+              <%= link_to cemetery_plot_path(plot.cemetery_id, plot._source.id) do %>
+              <img src="/assets/original/missing.png"></a>
+              <% end %>
+          <% end %>
+        
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-2">
+        <ul class="meta-search">
+          <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.birth_date%></span></li>
+          <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.death_date%></span></li>
+          <li><i class="glyphicon glyphicon-globe"></i> <span><%= link_to plot._source.cemetery_name, cemetery_plot_path(plot.cemetery_id, plot._source.id) %></span></li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+        <h3><%= link_to plot.last_name, cemetery_plot_path(plot.cemetery_id, plot._source.id) %></h3>
+        <h4><%=plot.first_name%> <%=plot.middle_name%></h4>
+        <p><%= plot.description %></p>            
+                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+      </div>
+      <span class="clearfix borda"></span>
+    </article>
     <% end %>
-  </tbody>
-</table>
+
+ 
+<% else %>
+
+  <% @plots.each do |plot| %>
+
+
+
+      
+      <article class="search-result row">
+      <div class="col-xs-12 col-sm-12 col-md-3">
+     
+          <% unless plot.attachments.first == nil%>
+            <a href="#" title="Lorem ipsum" class="thumbnail"><%= image_tag plot.attachments.first.photo(:small) %></a>
+          <% else %>
+            <%= link_to cemetery_plot_path(plot.cemetery_id, plot) do %>
+            <img src="/assets/original/missing.png"></a>
+          <% end %>
+        <% end %>
+
+        
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-2">
+        <ul class="meta-search">
+          <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.birth_date%></span></li>
+          <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.death_date%></span></li>
+          <li><i class="glyphicon glyphicon-globe"></i> <span><%= link_to plot.cemetery.name, cemetery_plot_path(plot.cemetery_id, plot) %></span></li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+        <h3><%= link_to plot.last_name, cemetery_plot_path(plot.cemetery_id, plot) %></h3>
+        <h4><%=plot.first_name%> <%=plot.middle_name%></h4>
+        <p><%= plot.description %></p>            
+        <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+      </div>
+      <span class="clearfix borda"></span>
+    </article>
+
+  <% end %>
+<% end %>
+</section>
+</div>
+
+
 
 

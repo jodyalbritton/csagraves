@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429235728) do
+ActiveRecord::Schema.define(version: 20140430231216) do
 
   create_table "attachments", force: true do |t|
     t.string   "title"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20140429235728) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "plots", force: true do |t|

@@ -1,6 +1,6 @@
 class PlotsController < ApplicationController
   before_action :set_plot, only: [:show, :edit, :update, :destroy]
-  add_breadcrumb :cemeteries, :cemeteries_path
+
    
 
   # GET /plots
@@ -8,14 +8,16 @@ class PlotsController < ApplicationController
   def index
    
     if params[:cemetery_id]
-     add_breadcrumb :index, :cemeteries_path
+    
    
     @cemetery = Cemetery.find(params[:cemetery_id])
     @plots = @cemetery.plots
 
 
-    else
-    @plots = Plot.all
+    elsif params[:query]
+      @plots = Plot.search(params[:query]).results
+    else 
+       @plots = Plot.all
     end 
    
   end

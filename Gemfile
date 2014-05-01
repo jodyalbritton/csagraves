@@ -6,8 +6,8 @@ gem 'rails', '4.1.0'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem "sass-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'bootstrap-sass'
 
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -28,6 +28,9 @@ gem 'devise'
 gem 'cancan'
 gem 'rolify'
 gem "paperclip", "~> 4.1"
+gem "geocoder"
+gem "elasticsearch-model"
+gem "elasticsearch-rails"
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development

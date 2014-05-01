@@ -1,48 +1,60 @@
-<%- model_class = Cemetery -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
+<div class="container">
 
-<div class="row">
-<div class="span9">
-<table class="table table-striped span8">
-  <thead>
-    <tr>
-      <th></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:city) %></th>
-      <th><%= model_class.human_attribute_name(:state) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @cemeteries.each do |cemetery| %>
-      <tr>
-        <td><%= image_tag cemetery.logo(:thumb) %></td>
-        <td><%= link_to cemetery.name, cemetery_path(cemetery) %></td>
-        <td><%= cemetery.city %></td>
-        <td><%= cemetery.state %></td>
-        <td><%=l cemetery.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_cemetery_path(cemetery), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      cemetery_path(cemetery),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
+    <hgroup class="mb20">
+    <h1>Cemetery Listings</h1>
+    <h2 class="lead"><strong class="text-danger"><%= @cemeteries.count %></strong> can be found in our <strong class="text-danger">database</strong></h2>               
+  </hgroup>
+
+    <section class="col-xs-12 col-sm-6 col-md-12">
+    <% @cemeteries.each do |cemetery|%>
+    <article class="search-result row">
+      <div class="col-xs-12 col-sm-12 col-md-3">
+        <a href="#" title="Lorem ipsum" class="thumbnail"><%= image_tag cemetery.logo(:medium) %></a>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-2">
+        <ul class="meta-search">
+       
+          <li><i class="glyphicon glyphicon-info-sign"></i> <span><%= cemetery.plots.count %> Graves</span></li>
+          <li><i class="glyphicon glyphicon-search"></i> <span><%= link_to "Browse", cemetery_plots_path(cemetery)%></span></li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+        <h3><%= link_to cemetery.name, cemetery_plots_path(cemetery) %></h3>
+        <h4><%= cemetery.full_street_address %></h4>
+
+        <p><%=cemetery.description %></p>            
+      <span class="plus">
+      <%= link_to cemetery_path(cemetery) do %>
+        <i class="glyphicon glyphicon-plus"></i></a>
+      <% end %>
+      </span> 
+      </div>
+      <span class="clearfix borda"></span>
+    </article>
     <% end %>
-  </tbody>
-</table>
+
+  </section>
 </div>
-<div class="span2 well sidebar-nav">
-<%= link_to "Add a Cemetery",
-            new_cemetery_path,
-            :class => 'btn btn-primary' %>
-</div>
-</div>
+        
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+      
+  

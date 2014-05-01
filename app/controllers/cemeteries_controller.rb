@@ -1,6 +1,5 @@
 class CemeteriesController < ApplicationController
   before_action :set_cemetery, only: [:show, :edit, :update, :destroy]
-  add_breadcrumb :index, :cemeteries_path
  
   # GET /cemeteries
   # GET /cemeteries.json
@@ -70,6 +69,6 @@ class CemeteriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cemetery_params
-      params.require(:cemetery).permit(:name, :address, :address_two, :city, :state, :zip, :url, :phone, :description, :logo)
+      params.require(:cemetery).permit(:name, :address, :address_two, :city, :state, :zip, :url, :phone, :description, :logo,:latitude, :longitude)
     end
 end
