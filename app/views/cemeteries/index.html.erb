@@ -9,11 +9,13 @@
     <% @cemeteries.each do |cemetery|%>
     <article class="search-result row">
       <div class="col-xs-12 col-sm-12 col-md-3">
-        <a href="#" title="Lorem ipsum" class="thumbnail"><%= image_tag cemetery.logo(:medium) %></a>
+       <%= link_to cemetery_plots_path(cemetery), :class=> "thumbnail" do %>
+       <%= image_tag cemetery.logo(:medium) %>
+       <%end%>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-2">
         <ul class="meta-search">
-       
+        
           <li><i class="glyphicon glyphicon-info-sign"></i> <span><%= cemetery.plots.count %> Graves</span></li>
           <li><i class="glyphicon glyphicon-search"></i> <span><%= link_to "Browse", cemetery_plots_path(cemetery)%></span></li>
         </ul>

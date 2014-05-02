@@ -1,11 +1,13 @@
-<%- model_class = Plot -%>
+<div class="container">
+<div class="row">
+<div class="col-md-10">
 <div class="page-header">
   <h1><%= @plot.last_name %>, <%= @plot.first_name %>, <%= @plot.middle_name %></h1>
   <h3><%= @plot.birth_date %> - <%= @plot.death_date %> </h3>
 </div>
 
 <div class="row">
-<div class="span9">
+
 <h4>
     Details
 </h4>
@@ -21,8 +23,8 @@
   <%= link_to @plot.cemetery.name, cemetery_path(@plot.cemetery) %>
   <h4>Notes:</h4>
   <%= @plot.description %><br>
-</div>
-<div class="span3">
+
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               cemetery_plots_path(@cemetery), :class => 'btn'  %>
@@ -34,7 +36,7 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
 </div>
-</div>
+
 </div>
 <div class ="row">
   <% @plot.attachments.each do |attachment| %>
@@ -42,6 +44,12 @@
   <%end%>
 <div class="row">
   <%= link_to "Add Photo", new_cemetery_plot_attachment_path(@plot.cemetery, @plot)%>
+</div>
+</div>
+<div class="col-md-2">
+</div>
+</div>
+</div>
 </div>
 
 

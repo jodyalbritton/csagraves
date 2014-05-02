@@ -1,0 +1,69 @@
+<% content_for :head do %>
+ 
+  <%= stylesheet_link_tag 'users', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'users', 'data-turbolinks-track' => true %>
+<% end %>
+
+
+
+
+<div class="container">
+<div class="row">
+<div class="col-md-3"></div>
+  <div class="col-md-6">
+  <div class="page-header"><h2>Registration Form</h2></div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => 'form-horizontal' } ) do |f| %>
+  
+  <form class="">
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend><h3>Create an Account</h3></legend>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-1 control-label" for="username"></label>  
+        <div class="col-md-12">
+          <%= f.email_field :email, autofocus: true, class: "form-control input-md", :placeholder => "Email Address" %>
+          
+
+        </div>
+      </div>
+
+      <!-- Password input-->
+      <div class="form-group">
+        <label class="col-md-1 control-label" for="password"></label>
+        <div class="col-md-12">
+         <%= f.password_field :password, autocomplete: "off", class: "form-control input-md", :placeholder => "Password"  %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-1 control-label" for="password"></label>
+        <div class="col-md-12">
+         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control input-md", :placeholder => "Confirm Password"  %>
+        </div>
+      </div>
+
+      <!-- Button (Double) -->
+      <div class="form-group">
+        <label class="col-md-1 control-label" for="login"></label>
+      <div class="col-md-5">
+        <%= f.submit "Sign in", :name => "login", :class=> "btn btn-block btn-success" %>
+
+      </div>
+      <div class="col-md-5">
+        <% link_to new_password_path(resource_name), :class=> 'forgot-password' do %>
+        <button id="forpass" name="forpass" class="btn btn-block btn-warning">I forgot my password</button></div>  
+        <% end %>
+      </div>
+    </fieldset>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div> <!--./row -->
+<div class="col-md-3"></div>
+</div> <!--./container -->
+
+  
+
+
+

@@ -4,7 +4,7 @@ class CemeteriesController < ApplicationController
   # GET /cemeteries
   # GET /cemeteries.json
   def index
-    @cemeteries = Cemetery.all
+    @cemeteries = Cemetery.all.order(:name)
   end
 
   # GET /cemeteries/1
