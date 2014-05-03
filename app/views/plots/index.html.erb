@@ -36,7 +36,7 @@
         <ul class="meta-search">
           <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.birth_date%></span></li>
           <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.death_date%></span></li>
-          <li><i class="glyphicon glyphicon-globe"></i> <span><%= link_to plot._source.cemetery_name, cemetery_plot_path(plot.cemetery_id, plot._source.id) %></span></li>
+          <li><i class="glyphicon glyphicon-globe"></i> <span><%= link_to "Plot:" +plot._source.plot+" "+plot._source.cemetery_name, cemetery_plot_path(plot.cemetery_id, plot._source.id) %></span></li>
         </ul>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
@@ -74,7 +74,8 @@
         <ul class="meta-search">
           <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.birth_date%></span></li>
           <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.death_date%></span></li>
-          <li><i class="glyphicon glyphicon-globe"></i> <span><%= link_to plot.cemetery.name, cemetery_plot_path(plot.cemetery_id, plot) %></span></li>
+          <li><i class="glyphicon glyphicon-globe"></i> <span><%= link_to "Plot:" +plot.plot, cemetery_plot_path(plot.cemetery_id, plot) %></span></li>
+         
         </ul>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-7 excerpet">

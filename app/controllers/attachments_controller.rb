@@ -15,8 +15,10 @@ class AttachmentsController < ApplicationController
     @cemetery = Cemetery.find(params[:cemetery_id])
     @plot = Plot.find(params[:plot_id])
     @attachment = Attachment.new(attachment_params)
-    @attachment.imageable_id = @plot.id 
-    @attachment.imageable_type = @plot.class
+    @attachment.imageable_id = params[:imageable_id]
+    @attachment.imageable_type = params[:imageable_type]
+    @attachment.save!
+   
 
    
 
@@ -32,7 +34,7 @@ class AttachmentsController < ApplicationController
   end
 
   def attachment_params
-    params.require(:attachment).permit(:photo, :about, :user_id)
+    params.require(:attachment).permit(:photo, :about, :user_id, :imageable_id, :imageable_type)
   end
 
 end

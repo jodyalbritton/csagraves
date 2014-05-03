@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
 
  
-  
+  get 'map/index'
+
+  resources :attachments
 
  
  resources :plots, :only => [:index]
@@ -13,8 +15,6 @@ Rails.application.routes.draw do
   
 
 
-
-  
   resources :cemeteries do 
     resources :plots do 
       resources :attachments
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get 'welcome/about'
 
   get 'welcome/help'
+
+  post 'attachments/new'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

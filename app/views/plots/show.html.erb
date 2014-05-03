@@ -1,57 +1,60 @@
+ <% content_for :head do %>
+ 
+  <%= stylesheet_link_tag 'plots', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'plots', 'data-turbolinks-track' => true %>
+<% end %>
+
+
+ <% @plot_photo = @plot.attachments %>
 <div class="container">
-<div class="row">
-<div class="col-md-10">
-<div class="page-header">
-  <h1><%= @plot.last_name %>, <%= @plot.first_name %>, <%= @plot.middle_name %></h1>
-  <h3><%= @plot.birth_date %> - <%= @plot.death_date %> </h3>
-</div>
+ <article class="search-result row">
+      <div class="col-xs-12 col-sm-12 col-md-3">
+          <% unless @plot_photo.first == nil%>
+            <a href="#" title="Lorem ipsum" class="thumbnail"><%= image_tag @plot_photo.first.photo(:small) %></a>
+          <% else %>
+              <%= link_to cemetery_plot_path(@plot.cemetery.id, @plot.id) do %>
+              <img src="/assets/original/missing.png"></a>
+              <% end %>
+          <% end %>
+        
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-2">
+        <ul class="meta-search">
+          <li><i class="glyphicon glyphicon-calendar"></i> <span><%=@plot.birth_date%></span></li>
+          <li><i class="glyphicon glyphicon-calendar"></i> <span><%=@plot.death_date%></span></li>
+          <li><i class="glyphicon glyphicon-globe"></i> <span><%= link_to @plot.cemetery.name, cemetery_plots_path(@plot.cemetery_id) %></span></li>
+           <li><i class="glyphicon glyphicon-user"></i> <span><%= link_to "Mother:"+" "+@plot.mother, cemetery_plot_path(@plot.cemetery_id, @plot) %></span></li>
+          <li><i class="glyphicon glyphicon-user"></i> <span><%= link_to "Father:"+" "+@plot.father, cemetery_plot_path(@plot.cemetery_id, @plot) %></span></li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+        <h3><%= link_to @plot.last_name, cemetery_plot_path(@plot.cemetery_id, @plot.id) %></h3>
+        <h4><%=@plot.first_name%> <%=@plot.middle_name%></h4>
+        <p><%= @plot.description %></p>            
+                
+      </div>
+      <span class="clearfix borda"></span>
+    </article>
 
-<div class="row">
-
-<h4>
-    Details
-</h4>
-  <b>Rank</b><br>  <%= @plot.rank %><br>
-  <b>Birth Date</b><br> <%= @plot.birth_date %><br>
-  <b>Death Date</b><br> <%= @plot.death_date %><br>
-  <b> Unit Name</b><br>  <%= @plot.unit %><br>
-  <b>Spouse</b><br>  <%= @plot.spouse %><br>
-  <b>Mother</b><br>  <%= @plot.mother %><br>
-  <b>Father</b><br>  <%= @plot.father %><br>
-  <h4>Location:</h4>
-  <b>Plot:</b> <%= @plot.id %><br>
-  <%= link_to @plot.cemetery.name, cemetery_path(@plot.cemetery) %>
-  <h4>Notes:</h4>
-  <%= @plot.description %><br>
-
-
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              cemetery_plots_path(@cemetery), :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_cemetery_plot_path(@cemetery, @plot), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              cemetery_plot_path(@cemetery, @plot),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
-
-</div>
-<div class ="row">
-  <% @plot.attachments.each do |attachment| %>
-    <%= image_tag attachment.photo(:small) %>
-  <%end%>
-<div class="row">
-  <%= link_to "Add Photo", new_cemetery_plot_attachment_path(@plot.cemetery, @plot)%>
-</div>
-</div>
-<div class="col-md-2">
-</div>
-</div>
-</div>
+  <div class="row">
+   <% @plot.attachments.each do |attachment| %>
+      <div class="col-md-3 col-sm-4 col-xs-6">
+       <%= link_to "#", :data=> {:toggle=> "modal", :target=>"#lightbox"}, :class=> "thumbnail" do %>
+          <%= image_tag attachment.photo(:original) %>
+      <% end %>
+      </div>
+    <%end%>
+  </div>
 </div>
 
 
-  
+<div id="lightbox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <button type="button" class="close hidden" data-dismiss="modal" aria-hidden="true">×</button>
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="" alt="" />
+            </div>
+        </div>
+    </div>
 </div>

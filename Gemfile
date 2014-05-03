@@ -31,6 +31,7 @@ gem "paperclip", "~> 4.1"
 gem "geocoder"
 gem "elasticsearch-model"
 gem "elasticsearch-rails"
+gem 'gmaps4rails'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
@@ -47,3 +48,4 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'jquery.fileupload-rails'
