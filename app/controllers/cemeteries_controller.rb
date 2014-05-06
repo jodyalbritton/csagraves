@@ -1,4 +1,5 @@
 class CemeteriesController < ApplicationController
+  
   before_action :set_cemetery, only: [:show, :edit, :update, :destroy]
  
   # GET /cemeteries

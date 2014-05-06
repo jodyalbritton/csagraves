@@ -7,7 +7,13 @@
 
     <hgroup class="mb20">
     <h1>Cemetery Listings</h1>
-    <h2 class="lead"><strong class="text-danger"><%= @cemeteries.count %></strong> can be found in our <strong class="text-danger">database</strong></h2>               
+    <h2 class="lead"><strong class="text-danger"><%= @cemeteries.count %></strong> can be found in our <strong class="text-danger">database</strong></h2>
+    <% if user_signed_in? %>
+      <% if current_user.has_role? :admin %>
+      <%= link_to "Add Cemetery", new_cemetery_path %>
+
+      <% end %>    
+    <% end %>           
   </hgroup>
 
     <section class="col-xs-12 col-sm-6 col-md-12">
@@ -22,7 +28,14 @@
         <ul class="meta-search">
         
           <li><i class="glyphicon glyphicon-info-sign"></i> <span><%= cemetery.plots.count %> Graves</span></li>
-          <li><i class="glyphicon glyphicon-search"></i> <span><%= link_to "Browse", cemetery_plots_path(cemetery)%></span></li>
+          <li><i class="glyphicon glyphicon-circle-arrow-right"></i> <span><%= link_to "More Details", cemetery_path(cemetery)%></span></li>
+          <li><i class="glyphicon glyphicon-search"></i> <span><%= link_to "Browse Graves", cemetery_plots_path(cemetery)%></span></li>
+            <% if user_signed_in? %>
+              <% if current_user.has_role? :admin %>
+               <li><i class="glyphicon glyphicon-pencil"></i> <span><%= link_to "edit", edit_cemetery_path(cemetery)%></span></li>
+
+              <% end %>    
+            <% end %>  
         </ul>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-7 excerpet">

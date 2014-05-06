@@ -1,4 +1,5 @@
 class Plot < ActiveRecord::Base
+  resourcify
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   Plot.import

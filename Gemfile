@@ -8,6 +8,7 @@ gem 'mysql2'
 # Use SCSS for stylesheets
 gem "sass-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'bootstrap-sass'
+gem 'simple_form'
 
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -25,7 +26,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'devise'
-gem 'cancan'
+gem 'cancancan', '~> 1.7'
 gem 'rolify'
 gem "paperclip", "~> 4.1"
 gem "geocoder"
