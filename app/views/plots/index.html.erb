@@ -1,4 +1,10 @@
 <%- model_class = Plot -%>
+ <% if user_signed_in? %>
+      <% if current_user.has_role? :admin %>
+      <%= link_to "Add Plot", new_cemetery_plot_path(@cemetery) %>
+
+      <% end %>    
+    <% end %>   
  <div class="container">
  <% if params[:query]%>
     <hgroup class="mb20">
@@ -37,6 +43,15 @@
           <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.birth_date%></span></li>
           <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.death_date%></span></li>
           <li><i class="glyphicon glyphicon-globe"></i> <span><%= link_to "Plot:" +plot._source.plot+" "+plot._source.cemetery_name, cemetery_plot_path(plot.cemetery_id, plot._source.id) %></span></li>
+          <% if user_signed_in? %>
+            <% if current_user.has_role? :admin %>
+            <li><i class="glyphicon glyphicon-calendar"></i> <span>
+            <%= link_to "Edit Plot", edit_cemetery_plot_path(@cemetery, plot) %>
+            </span></li>
+
+            <% end %>    
+          <% end %> 
+
         </ul>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
@@ -45,6 +60,7 @@
         <p><%= plot.description %></p>            
                 <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
       </div>
+
       <span class="clearfix borda"></span>
     </article>
     <% end %>
@@ -75,6 +91,14 @@
           <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.birth_date%></span></li>
           <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.death_date%></span></li>
           <li><i class="glyphicon glyphicon-globe"></i> <span><%= link_to "Plot:" +plot.plot, cemetery_plot_path(plot.cemetery_id, plot) %></span></li>
+              <% if user_signed_in? %>
+            <% if current_user.has_role? :admin %>
+            <li><i class="glyphicon glyphicon-calendar"></i> <span>
+            <%= link_to "Edit Plot", edit_cemetery_plot_path(plot.cemetery_id, plot) %>
+            </span></li>
+
+            <% end %>    
+          <% end %> 
          
         </ul>
       </div>

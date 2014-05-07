@@ -32,7 +32,17 @@ class AttachmentsController < ApplicationController
       end
     end
   end
-
+  
+   def destroy
+    @cemetery = Cemetery.find(params[:cemetery_id])
+    @plot = Plot.find(params[:plot_id])
+    @attachment = Attachment.find(params[:id])
+    @attachment.destroy
+    respond_to do |format|
+      format.html { redirect_to cemetery_plot_path(@cemetery, @plot) }
+      format.json { head :no_content }
+    end
+  end
   def attachment_params
     params.require(:attachment).permit(:photo, :about, :user_id, :imageable_id, :imageable_type)
   end

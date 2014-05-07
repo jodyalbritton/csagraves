@@ -1,6 +1,7 @@
 class PlotsController < ApplicationController
   before_action :set_plot, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!,
+    :only => [:destroy, :update, :edit, :create, :new]
    
 
   # GET /plots
@@ -17,7 +18,7 @@ class PlotsController < ApplicationController
     elsif params[:query]
       @plots = Plot.search(params[:search_param]+":"+params[:query]).results
     else 
-       @plots = Plot.all
+      @plots = Plot.all
     end 
    
   end
@@ -27,23 +28,32 @@ class PlotsController < ApplicationController
  
   def show
      @cemetery = Cemetery.find(params[:cemetery_id])
+   
   end
 
   # GET /plots/new
   def new
     @cemetery = Cemetery.find(params[:cemetery_id])
     @plot = Plot.new
+    authorize_action_for(@plot)
   end
 
   # GET /plots/1/edit
   def edit
      @cemetery = Cemetery.find(params[:cemetery_id])
+     authorize_action_for(@plot)
+
+
+
+     
   end
 
   # POST /plots
   # POST /plots.json
   def create
     @cemetery = Cemetery.find(params[:cemetery_id])
+    authorize_action_for(@plot)
+
     @plot = Plot.new(plot_params)
     @plot.cemetery_id = @cemetery.id
 
@@ -62,6 +72,8 @@ class PlotsController < ApplicationController
   # PATCH/PUT /plots/1.json
   def update
     @cemetery = Cemetery.find(params[:cemetery_id])
+   authorize_action_for(@plot)
+
 
     respond_to do |format|
       if @plot.update(plot_params)

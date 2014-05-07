@@ -15,8 +15,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-          <li><%= link_to "Cemetery List", cemeteries_path %></li>
-          <li><%= link_to "Cemetery Map", map_index_path %></li>
+          <li><%= link_to "Cemetery List", cemeteries_path, data: { no_turbolink: true } %></li>
+          <li><%= link_to "Cemetery Map", map_index_path, data: { no_turbolink: true } %></li>
           <li><%= link_to "Help", welcome_help_path %></li>
       </ul>
 
