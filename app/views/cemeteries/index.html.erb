@@ -1,20 +1,23 @@
- <div class="row">
-        <div class="col-lg-4 col-lg-offset-4">
-            <input type="search" id="container-search" value="" class="form-control" placeholder="Search...">
-        </div>
-    </div>
+
 <div class="container" id="searchable-container">
 
     <hgroup class="mb20">
+     <span class="col-md-4 pull-right">
+            <input type="search" id="container-search" value="" class="form-control input-md-1" placeholder="Search...">
+    </span>
     <h1>Cemetery Listings</h1>
+       
     <h2 class="lead"><strong class="text-danger"><%= @cemeteries.count %></strong> can be found in our <strong class="text-danger">database</strong></h2>
     <% if user_signed_in? %>
       <% if current_user.has_role? :admin %>
       <%= link_to "Add Cemetery", new_cemetery_path %>
 
       <% end %>    
-    <% end %>           
-  </hgroup>
+    <% end %> 
+  
+        
+
+   </hgroup>
 
     <section class="col-xs-12 col-sm-6 col-md-12">
     <% @cemeteries.each do |cemetery|%>
