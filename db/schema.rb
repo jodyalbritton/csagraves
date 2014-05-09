@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140506192517) do
+ActiveRecord::Schema.define(version: 20140509182442) do
 
   create_table "attachments", force: true do |t|
     t.string   "title"
@@ -48,7 +48,23 @@ ActiveRecord::Schema.define(version: 20140506192517) do
     t.datetime "logo_updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "slug"
   end
+
+  add_index "cemeteries", ["slug"], name: "index_cemeteries_on_slug", unique: true, using: :btree
+
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "plots", force: true do |t|
     t.string   "first_name"
@@ -79,10 +95,12 @@ ActiveRecord::Schema.define(version: 20140506192517) do
     t.string   "county"
     t.string   "birth_location"
     t.string   "death_location"
+    t.string   "slug"
   end
 
   add_index "plots", ["cemetery_id"], name: "index_plots_on_cemetery_id", using: :btree
   add_index "plots", ["created_by_id"], name: "index_plots_on_created_by_id", using: :btree
+  add_index "plots", ["slug"], name: "index_plots_on_slug", unique: true, using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

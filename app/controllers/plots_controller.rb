@@ -11,12 +11,17 @@ class PlotsController < ApplicationController
     if params[:cemetery_id]
     
    
-    @cemetery = Cemetery.find(params[:cemetery_id])
+    @cemetery = Cemetery.friendly.find(params[:cemetery_id])
     @plots = @cemetery.plots
 
 
     elsif params[:query]
-      @plots = Plot.search(params[:search_param]+":"+params[:query]).results
+      unless params[:search_param] == "" 
+        @plots = Plot.search(params[:search_param]+":"+params[:query]).results
+      else
+        @plots = Plot.search(params[:query]).results
+      end 
+
     else 
       @plots = Plot.all
     end 
@@ -27,20 +32,20 @@ class PlotsController < ApplicationController
   # GET /plots/1.json
  
   def show
-     @cemetery = Cemetery.find(params[:cemetery_id])
+     @cemetery = Cemetery.friendly.find(params[:cemetery_id])
    
   end
 
   # GET /plots/new
   def new
-    @cemetery = Cemetery.find(params[:cemetery_id])
+    @cemetery = Cemetery.friendly.find(params[:cemetery_id])
     @plot = Plot.new
     authorize_action_for(@plot)
   end
 
   # GET /plots/1/edit
   def edit
-     @cemetery = Cemetery.find(params[:cemetery_id])
+     @cemetery = Cemetery.friendly.find(params[:cemetery_id])
      authorize_action_for(@plot)
 
 
@@ -51,7 +56,7 @@ class PlotsController < ApplicationController
   # POST /plots
   # POST /plots.json
   def create
-    @cemetery = Cemetery.find(params[:cemetery_id])
+    @cemetery = Cemetery.friendly.find(params[:cemetery_id])
     authorize_action_for(@plot)
 
     @plot = Plot.new(plot_params)
@@ -71,7 +76,7 @@ class PlotsController < ApplicationController
   # PATCH/PUT /plots/1
   # PATCH/PUT /plots/1.json
   def update
-    @cemetery = Cemetery.find(params[:cemetery_id])
+    @cemetery = Cemetery.friendly.find(params[:cemetery_id])
    authorize_action_for(@plot)
 
 
@@ -89,7 +94,7 @@ class PlotsController < ApplicationController
   # DELETE /plots/1
   # DELETE /plots/1.json
   def destroy
-    @cemetery = Cemetery.find(params[:cemetery_id])
+    @cemetery = Cemetery.friendly.find(params[:cemetery_id])
     @plot.destroy
     respond_to do |format|
       format.html { redirect_to cemetery_plots_path(@cemetery) }
@@ -100,7 +105,7 @@ class PlotsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_plot
-      @plot = Plot.find(params[:id])
+      @plot = Plot.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

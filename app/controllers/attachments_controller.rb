@@ -4,16 +4,16 @@ class AttachmentsController < ApplicationController
 	end 
 
 	def new
-		@plot = Plot.find(params[:plot_id])
-	  @cemetery = Cemetery.find(params[:cemetery_id])
+		@plot = Plot.friendly.find(params[:plot_id])
+	  @cemetery = Cemetery.friendly.find(params[:cemetery_id])
     @attachment = Attachment.new
 	end
 
 	def create
 	  
     
-    @cemetery = Cemetery.find(params[:cemetery_id])
-    @plot = Plot.find(params[:plot_id])
+    @cemetery = Cemetery.friendly.find(params[:cemetery_id])
+    @plot = Plot.friendly.find(params[:plot_id])
     @attachment = Attachment.new(attachment_params)
     @attachment.imageable_id = params[:imageable_id]
     @attachment.imageable_type = params[:imageable_type]
@@ -34,8 +34,8 @@ class AttachmentsController < ApplicationController
   end
   
    def destroy
-    @cemetery = Cemetery.find(params[:cemetery_id])
-    @plot = Plot.find(params[:plot_id])
+    @cemetery = Cemetery.friendly.find(params[:cemetery_id])
+    @plot = Plot.friendly.find(params[:plot_id])
     @attachment = Attachment.find(params[:id])
     @attachment.destroy
     respond_to do |format|

@@ -1,10 +1,5 @@
 <%- model_class = Plot -%>
- <% if user_signed_in? %>
-      <% if current_user.has_role? :admin %>
-      <%= link_to "Add Plot", new_cemetery_plot_path(@cemetery) %>
-
-      <% end %>    
-    <% end %>   
+ 
  <div class="container">
  <% if params[:query]%>
     <hgroup class="mb20">
@@ -46,7 +41,7 @@
           <% if user_signed_in? %>
             <% if current_user.has_role? :admin %>
             <li><i class="glyphicon glyphicon-calendar"></i> <span>
-            <%= link_to "Edit Plot", edit_cemetery_plot_path(@cemetery, plot) %>
+            <%= link_to "Edit Plot", edit_cemetery_plot_path(plot.cemetery_id, plot) %>
             </span></li>
 
             <% end %>    
@@ -71,7 +66,12 @@
   <% @plots.each do |plot| %>
 
 
+ <% if user_signed_in? %>
+      <% if current_user.has_role? :admin %>
+      <%= link_to "Add Plot", new_cemetery_plot_path(@cemetery) %>
 
+      <% end %>    
+    <% end %>  
       
       <article class="search-result row">
       <div class="col-xs-12 col-sm-12 col-md-3">
