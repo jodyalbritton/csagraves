@@ -1,51 +1,37 @@
 <div class="container">
 <%= simple_form_for ([@cemetery, @plot]), :html => { :class => 'form-horizontal' } do |f| %>
   <div class="form-group">
-    <%= f.label :first_name, :class =>  'control-label col-md-4 ' %>
-    <div class="controls col-md-4">
-      <%= f.text_field :first_name, :class => 'text_field form-control input-md' %>
+    <%= f.label :first_name, :class =>  'control-label col-sm-2 ' %>
+    <div class="controls col-sm-2">
+      <%= f.text_field :first_name, :class => 'form-control' %>
+    </div>
+  
+    <%= f.label :middle_name, :class =>  'control-label col-sm-2 ' %>
+    <div class="controls col-sm-2">
+      <%= f.text_field :middle_name, :class => 'form-control' %>
+    </div>
+ 
+  
+    <%= f.label :last_name, :class =>  'control-label col-sm-2 ' %>
+    <div class="controls col-sm-2">
+      <%= f.text_field :last_name, :class => 'form-control' %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label :middle_name, :class =>  'control-label col-md-4 ' %>
-    <div class="controls col-md-4">
-      <%= f.text_field :middle_name, :class => 'text_field form-control input-md' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :last_name, :class =>  'control-label col-md-4 ' %>
-    <div class="controls col-md-4">
-      <%= f.text_field :last_name, :class => 'text_field form-control input-md' %>
-    </div>
-  </div>
-   <div class="form-group">
+
+  <ul class="nav nav-tabs" id="myTab">
+  <li class="active"><a href="#basic" data-toggle="tab">Basic Information</a></li>
+  <li><a href="#service" data-toggle="tab">Service</a></li>
+  <li><a href="#family" data-toggle="tab">Family</a></li>
+  <li><a href="#notes" data-toggle="tab">Notes</a></li>
+  <li><a href="#admin" data-toggle="tab">Admin</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="basic">
+    <div class="form-group">
     <%= f.label :county, :class =>  'control-label col-md-4 ' %>
     <div class="controls col-md-4">
       <%= f.text_field :county, :class => 'text_field form-control input-md' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :rank, :class =>  'control-label col-md-4 ' %>
-    <div class="controls col-md-4">
-      <%= f.text_field :rank, :class => 'text_field form-control input-md' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :enlistment_date, :class =>  'control-label col-md-4 ' %>
-    <div class="controls col-md-4">
-      <%= f.text_field :enlistment_date, :class => 'text_field form-control input-md' %>
-    </div>
-  </div>
-    <div class="form-group">
-    <%= f.label :service_end_date, :class =>  'control-label col-md-4 ' %>
-    <div class="controls col-md-4">
-      <%= f.text_field :service_end_date, :class => 'text_field form-control input-md' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :release_from_service, :class =>  'control-label col-md-4 ' %>
-    <div class="controls col-md-4">
-      <%= f.text_field :release_from_service, :class => 'text_field form-control input-md' %>
     </div>
   </div>
   <div class="form-group">
@@ -72,31 +58,42 @@
       <%= f.text_field :death_location, :class => 'text_field form-control input-md' %>
     </div>
   </div>
+
+  </div>
+  <div class="tab-pane" id="service">
   <div class="form-group">
-    <%= f.label :created_by_id, :class =>  'control-label col-md-4 ' %>
+    <%= f.label :rank, :class =>  'control-label col-md-4 ' %>
     <div class="controls col-md-4">
-      <%= f.text_field :created_by_id, :class => 'text_field form-control input-md' %>
+      <%= f.text_field :rank, :class => 'text_field form-control input-md' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :approved, :class =>  'control-label col-md-4 ' %>
+    <%= f.label :enlistment_date, :class =>  'control-label col-md-4 ' %>
     <div class="controls col-md-4">
-      <%= f.input :approved, :class => 'boolean form-control input-md' %>
+      <%= f.text_field :enlistment_date, :class => 'text_field form-control input-md' %>
+    </div>
+  </div>
+    <div class="form-group">
+    <%= f.label :service_end_date, :class =>  'control-label col-md-4 ' %>
+    <div class="controls col-md-4">
+      <%= f.text_field :service_end_date, :class => 'text_field form-control input-md' %>
     </div>
   </div>
   <div class="form-group">
+    <%= f.label :release_from_service, :class =>  'control-label col-md-4 ' %>
+    <div class="controls col-md-4">
+      <%= f.text_field :release_from_service, :class => 'text_field form-control input-md' %>
+    </div>
+  </div>
+   <div class="form-group">
     <%= f.label :unit, :class =>  'control-label col-md-4 ' %>
     <div class="controls col-md-4">
       <%= f.text_field :unit, :class => 'text_field form-control input-md' %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label :description, :class =>  'control-label col-md-4 ' %>
-    <div class="controls col-md-4">
-      <%= f.text_field :description, :class => 'text_field form-control input-md' %>
-    </div>
   </div>
-  <div class="form-group">
+  <div class="tab-pane" id="family">
+     <div class="form-group">
     <%= f.label :spouse, :class =>  'control-label col-md-4 ' %>
     <div class="controls col-md-4">
       <%= f.text_field :spouse, :class => 'text_field form-control input-md' %>
@@ -112,6 +109,22 @@
     <%= f.label :father, :class =>  'control-label col-md-4 ' %>
     <div class="controls col-md-4">
       <%= f.text_field :father, :class => 'text_field form-control input-md' %>
+    </div>
+  </div>
+  </div>
+  <div class="tab-pane" id="notes">
+    <div class="form-group">
+    <%= f.label :description, :class =>  'control-label col-md-4 ' %>
+    <div class="controls col-md-4">
+      <%= f.text_area :description, :class => 'text_field form-control input-md' %>
+    </div>
+  </div>
+  </div>
+  <div class="tab-pane" id="admin">
+      <div class="form-group">
+    <%= f.label :scv_id, :class =>  'control-label col-md-4 ' %>
+    <div class="controls col-md-4">
+      <%= f.text_field :scv_id, :class => 'text_field form-control input-md' %>
     </div>
   </div>
   <div class="form-group">
@@ -132,16 +145,32 @@
       <%= f.text_field :ancestry_com_url, :class => 'text_field form-control input-md' %>
     </div>
   </div>
+   <div class="form-group">
+    <%= f.label :created_by_id, :class =>  'control-label col-md-4 ' %>
+    <div class="controls col-md-4">
+      <%= f.text_field :created_by_id, :class => 'text_field form-control input-md' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :approved, :class =>  'control-label col-md-4 ' %>
+    <div class="controls col-md-4">
+      <%= f.input :approved, :class => 'boolean form-control input-md' %>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  
+  
+ 
+ 
+  
+
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 cemetery_plots_path(@cemetery), :class => 'btn' %>
   </div>
-  <div class="form-group">
-    <%= f.label :scv_id, :class =>  'control-label col-md-4 ' %>
-    <div class="controls col-md-4">
-      <%= f.text_field :scv_id, :class => 'text_field form-control input-md' %>
-    </div>
-  </div>
+
 <% end %>
 </div>
