@@ -2,6 +2,9 @@
  
   <%= stylesheet_link_tag 'plots', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'plots', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+  <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
 <% end %>
 <% @plot_photo = @plot.attachments %>
 
@@ -17,6 +20,8 @@
         <h4>Birth Location: <%= @plot.death_location %></h4>
         <h4>SCV: <%= link_to @plot.scv_id, "http://cgr.scv.org/vetDetails.php?id="+@plot.scv_id %></h4>
         <h4>Find A Grave: <%= link_to  @plot.find_a_grave, "http://www.findagrave.com/cgi-bin/fg.cgi?page=gr&GRid="+@plot.find_a_grave %></h4>
+        <h4>Mother: <%= @plot.mother %></h4>
+        <h4>Father: <%= @plot.father %></h4>
         
          
     
@@ -27,6 +32,7 @@
       <div class="col-xs-12 col-sm-12 col-md-3 ">
             <% unless @plot_photo.first == nil%>
             <a href="#" title="Lorem ipsum" class="thumbnail"><%= image_tag @plot_photo.first.photo(:small) %></a>
+            <h4<%= @plot.unit %></h4>
           <% else %>
               <%= link_to cemetery_plot_path(@plot.cemetery.id, @plot.id) do %>
               <img src="/assets/original/missing.png", class="pull-right"></a>
@@ -37,48 +43,80 @@
       <span class="clearfix borda"></span>
     </article>
   <div class="panel">
-  <ul class="nav nav-pills">
+      <ul class="nav nav-pills">
 
-          <% if user_signed_in? %>
-            <% if current_user.has_role? :admin %>
-              <li><%= link_to "Add Picture", new_cemetery_plot_attachment_path(@cemetery, @plot)%></a></li>
-              <li><%= link_to "Edit Plot", edit_cemetery_plot_path(@cemetery, @plot)%></li>
-              <li><%= link_to "Delete", cemetery_plot_path(@cemetery,@plot), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%>
-            <% end %>
-          <% end %>
+              <% if user_signed_in? %>
+                <% if current_user.has_role? :admin %>
+                  <li><%= link_to "Add Picture", new_cemetery_plot_attachment_path(@cemetery, @plot)%></a></li>
+                  <li><%= link_to "Edit Plot", edit_cemetery_plot_path(@cemetery, @plot)%></li>
+                  <li><%= link_to "Delete", cemetery_plot_path(@cemetery,@plot), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%>
+                <% end %>
+              <% end %>
 
- 
-  </ul>
      
+      </ul>
   </div>
   </div>
+
+
   <div class="container">
-
-   <% @plot.attachments.each do |attachment| %>
-      <div class="col-md-3 col-sm-4 col-xs-6">
-        <%= link_to "#", :data=> {:toggle=> "modal", :target=>"#lightbox"}, :class=> "thumbnail" do %>
-          <%= image_tag attachment.photo(:original) %>
-
-          <% if user_signed_in? %>
-            <% if current_user.has_role? :admin %>
-              <%= link_to "Delete", cemetery_plot_attachment_path(@cemetery,@plot,attachment), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-    <%end%>
-  </div>
-
-</div>
-
-
-<div id="lightbox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <button type="button" class="close hidden" data-dismiss="modal" aria-hidden="true">×</button>
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="" alt="" />
+  <div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+</div>
+
+ 
+
+</div>
+
+<div class="container">
+  <div id="links">
+  <% @plot.attachments.each do |attachment| %>
+    <div class="col-md-3 col-sm-4 col-xs-6">
+      <%= link_to attachment.photo(:original), data: {:gallery=>""} do %>
+       <%= image_tag attachment.photo(:thumb), :class=> "thumbnail" %> 
+      <% end %>
+       
+    </div> 
+  
+  <% end %>
+  </div>
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<script src="js/bootstrap-image-gallery.min.js"></script>
