@@ -9,12 +9,13 @@ Rails.application.routes.draw do
 
  
  resources :plots, :only => [:index]
+ resources :comments, :only => [:create, :destroy]
 
 
 
   
 
-
+  resources :cemeteries
   resources :cemeteries do 
     resources :plots do 
       resources :attachments

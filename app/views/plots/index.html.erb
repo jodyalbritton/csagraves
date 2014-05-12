@@ -103,7 +103,7 @@
         </ul>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-        <h3><%= link_to plot.last_name, cemetery_plot_path(plot.cemetery_id, plot) %></h3>
+        <h3><%= link_to plot.last_name, cemetery_plot_path(plot.cemetery, plot) %></h3>
         <h4><%=plot.first_name%> <%=plot.middle_name%></h4>
         <p><%= plot.description %></p>            
         <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>

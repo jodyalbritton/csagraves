@@ -2,9 +2,8 @@
  
   <%= stylesheet_link_tag 'plots', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'plots', 'data-turbolinks-track' => true %>
-  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
-  <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
+
 <% end %>
 <% @plot_photo = @plot.attachments %>
 
@@ -43,7 +42,7 @@
       <span class="clearfix borda"></span>
     </article>
   <div class="panel">
-      <ul class="nav nav-pills">
+      <ul class="nav navbar-inverse nav-pills">
 
               <% if user_signed_in? %>
                 <% if current_user.has_role? :admin %>
@@ -117,6 +116,7 @@
 </div>
 
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-<script src="js/bootstrap-image-gallery.min.js"></script>
+ <%= stylesheet_link_tag 'bootstrap-image-gallery', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'bootstrap-image-gallery', 'data-turbolinks-track' => true %>

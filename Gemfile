@@ -9,7 +9,8 @@ gem 'mysql2'
 gem "sass-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'bootstrap-sass'
 gem 'simple_form'
-
+gem 'acts_as_commentable_with_threading'
+  gem "awesome_nested_set", '~> 3.0.0.rc.3'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'

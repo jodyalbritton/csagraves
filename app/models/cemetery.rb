@@ -1,5 +1,6 @@
 class Cemetery < ActiveRecord::Base
 	resourcify
+    acts_as_commentable
     include Authority::Abilities
     extend FriendlyId
     friendly_id :name, use: :slugged

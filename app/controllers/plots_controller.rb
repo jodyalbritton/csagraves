@@ -32,7 +32,7 @@ class PlotsController < ApplicationController
   # GET /plots/1.json
  
   def show
-     @cemetery = Cemetery.friendly.find(params[:cemetery_id])
+      @cemetery = Cemetery.friendly.find(params[:cemetery_id])
    
   end
 

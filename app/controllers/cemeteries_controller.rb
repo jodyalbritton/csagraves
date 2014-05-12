@@ -14,6 +14,8 @@ class CemeteriesController < ApplicationController
   # GET /cemeteries/1
   # GET /cemeteries/1.json
   def show
+        @comments = @cemetery.comment_threads.order('created_at desc')
+        @new_comment = Comment.build_from(@cemetery, current_user, "")
   end
 
   # GET /cemeteries/new

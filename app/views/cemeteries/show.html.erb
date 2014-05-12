@@ -1,28 +1,60 @@
 <%- model_class = Cemetery -%>
-<div class="page-header">
-  <h1><%= @cemetery.name %></h1>
-</div>
-<div class='row'>
-<div class="col-md-8">
-  <div class="row">
-    <div class="col-md-4">
-    <%= image_tag @cemetery.logo(:medium) %>
-    </div>
-    <div class="col-md-4">
+
+<hgroup class="mb20">
+      <h1><%= @cemetery.name %></h1>
+      <h2 class="lead">
+      --
       <%= @cemetery.address %>
       <%= @cemetery.address_two %>
       <%= @cemetery.city %>
       <%= @cemetery.state %>
       <%= @cemetery.zip %>
-    </div>
-  </div>
+      </h2> 
+</hgroup>
+<div class='row'>
+<div class="col-md-8">
+  
+<div style="overflow:hidden;height 200px;width:100%;">
+<div id="gmap_canvas" style="height:200px;width:100%;">
   
 </div>
+
+</div>
+  <div class="row">
+              <div class="col-xs-12 divider text-center">
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong><%= @cemetery.plots.size%></strong></h2>                    
+                    <p><small>Plots</small></p>
+                    <%= link_to  cemetery_plots_path(@cemetery)  do %>
+                    <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> browse </button>
+                    <% end %>
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong><%= @cemetery.comment_threads.size %></strong></h2>                    
+                    <p><small>Comments</small></p>
+                    <button class="btn btn-info btn-block"><span class="fa fa-user"></span> Comment </button>
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                  
+                </div>
+            </div>
+
+  </div>
+  <div class="container">
+
+
+    <%= render :partial => 'comments/form'%>
+    <%= render :partial => 'comments/comment', :collection => @comments, :as => :comment%>
+  
+  </div>
+  </div>
+
 <div class="col-md-4">
  <div class="well sidebar-nav">
+             <%= image_tag @cemetery.logo(:medium) %>
               <ul class="nav nav-list">
                 <li class="nav-header">Cemetery Menu</li>
-                <li><%= link_to "Browse Graves", cemetery_plots_path(@cemetery)  %></li>
+                <li></li>
                 <li><%= link_to "Add a Grave", new_cemetery_plot_path(@cemetery)  %></li>
 
               </ul>
@@ -40,6 +72,6 @@
 </div>
 </div>
 </div>
-  
+  <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script><div style="overflow:hidden;height:500px;width:600px;"><div id="gmap_canvas" style="height:500px;width:600px;"></div><a class="google-map-code" href="http://www.map-embed.com" id="get-map-data">map-embed.com</a><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type="text/javascript"> function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(<%=@cemetery.latitude%>,<%=@cemetery.longitude%>),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(<%=@cemetery.latitude%>,<%=@cemetery.longitude%>)});infowindow = new google.maps.InfoWindow({content:"<b><%= @cemetery.name %></b><br/><%= @cemetery.full_street_address %>" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script><script type="text/javascript"> function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(<%=@cemetery.latitude%>,<%=@cemetery.longitude%>),mapTypeId: google.maps.MapTypeId.SATELLITE};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(<%=@cemetery.latitude%>,<%=@cemetery.longitude%>)});infowindow = new google.maps.InfoWindow({content:"<b><%= @cemetery.name %></b><br/><%= @cemetery.full_street_address %>" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
