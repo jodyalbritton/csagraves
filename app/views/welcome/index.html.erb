@@ -30,7 +30,7 @@
    
   <div class="container">
     <div class="row">    
-    <div class="col-xs-8 col-xs-offset-2">
+    <div class="col-xs-12">
 		<div class="input-group">
           <div class="input-group-btn search-panel">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -65,13 +65,15 @@
 	<h3>Recent Cemeteries</h3>
 	<div class="listgroup">
     <% @recent_cems.each do |cem|%>
-    <div class="list-group-item">
-      <%= link_to cem.name, cemetery_path(cem) %>
-      <span class="badge pull-right"><%= cem.updated_at %></span>
-    </div>
+  
+      <%= link_to  cemetery_path(cem), :class=>"list-group-item" do %>
+      <%= cem.name %> <span class="badge pull-right"><%= cem.updated_at.strftime("%d/%m/%Y") %></span>
+      <% end %>
+    
     <% end %>
-  </div>
+
 	</div>
+  </div>
 	<div class="col-md-4">
 	<h3>Add a Grave</h3>
 	 <%= link_to "Add Listing", cemeteries_path, :class=> "btn btn-primary btn-lg btn-block btn-huge" %>
@@ -82,11 +84,15 @@
 	<h3>Recent Listings</h3>
   <div class="listgroup">
     <% @listings.each do |listing|%>
-    <div class="list-group-item">
-      <%= link_to listing.full_name, cemetery_plot_path(listing.cemetery, listing) %>
-      <span class="badge pull-right"><%= listing.updated_at %></span>
-    </div>
+    
+      <%= link_to cemetery_plot_path(listing.cemetery, listing), :class=> "list-group-item" do %>
+  
+      
+          <%= listing.full_name %> <span class="badge"><%= listing.updated_at.strftime("%d/%m/%Y") %></span>
+  
+      <% end %>
     <% end %>
+     </div>
   </div>
 	</div>
 </div>
