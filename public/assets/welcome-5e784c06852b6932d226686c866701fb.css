@@ -1,0 +1,26 @@
+/* line 1, /var/src/csagraves/app/assets/stylesheets/welcome.css.scss */
+.logo-big h1 {
+  font-family: 'Alegreya SC', serif;
+  text-align: center;
+}
+
+/* line 7, /var/src/csagraves/app/assets/stylesheets/welcome.css.scss */
+.logo-big h2 {
+  font-family: 'Arizonia', cursive;
+  text-align: center;
+}
+
+/* line 13, /var/src/csagraves/app/assets/stylesheets/welcome.css.scss */
+.bottom p {
+  text-align: center;
+  font-family: 'Alegreya SC', serif;
+}
+
+/* line 19, /var/src/csagraves/app/assets/stylesheets/welcome.css.scss */
+.bottom {
+  border-bottom: solid;
+  border-color: grey;
+  border-size: 1px;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
+}
