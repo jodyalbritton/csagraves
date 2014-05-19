@@ -28,7 +28,7 @@
             <a href="#" title="Lorem ipsum" class="thumbnail"><%= image_tag @plot_photo.first.photo(:small) %></a>
           <% else %>
               <%= link_to cemetery_plot_path(plot.cemetery_id, plot._source.id) do %>
-              <%=image_tag("original/mising.png")%></a>
+              <%=image_tag image_path("original/missing.png")%></a>
               <% end %>
           <% end %>
         
@@ -80,7 +80,7 @@
             <a href="#" title="Lorem ipsum" class="thumbnail"><%= image_tag plot.attachments.first.photo(:small) %></a>
           <% else %>
             <%= link_to cemetery_plot_path(plot.cemetery_id, plot) do %>
-             <%=image_tag("original/mising.png")%></a>
+             <%=image_tag image_path("original/missing.png")%></a>
           <% end %>
         <% end %>
 
