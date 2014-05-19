@@ -34,7 +34,7 @@
             <h4<%= @plot.unit %></h4>
           <% else %>
               <%= link_to cemetery_plot_path(@plot.cemetery.id, @plot.id) do %>
-              <img src="/assets/original/missing.png", class="pull-right"></a>
+              <%= image_tag "original/missing.png" %>
               <% end %>
           <% end %>
        </div>         
