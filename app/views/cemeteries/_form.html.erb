@@ -38,6 +38,20 @@
     </div>
   </div>
    <div class="form-group">
+   <%= f.label :latitude, :class => 'control-label col-md-4 ' %>
+   <div class="col-md-6">
+    
+   <div class="controls col-md-3">
+   <%= f.text_field :latitude, :class => 'text_field form-control input-md' %>
+   </div>
+   <%= f.label :longitude, :class => 'control-label col-md-4 ' %>
+   <div class="controls col-md-3">
+
+   <%= f.text_field :longitude, :class => 'text_field form-control input-md' %>
+   </div>
+   </div>
+   </div>
+   <div class="form-group">
     <%= f.label :url, :class => 'control-label col-md-4 ' %>
    <div class="controls col-md-4">
       <%= f.text_field :url, :class => 'text_field form-control input-md' %>
