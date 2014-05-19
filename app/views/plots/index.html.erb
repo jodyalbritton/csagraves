@@ -28,7 +28,7 @@
             <a href="#" title="Lorem ipsum" class="thumbnail"><%= image_tag @plot_photo.first.photo(:small) %></a>
           <% else %>
               <%= link_to cemetery_plot_path(plot.cemetery_id, plot._source.id) do %>
-              <img src="/assets/original/missing.png"></a>
+              <%=image_tage("original/mising.png")%></a>
               <% end %>
           <% end %>
         
