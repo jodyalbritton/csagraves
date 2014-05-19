@@ -1,3 +1,33 @@
+<%= content_for :title do %>
+ <%= @cemetery.name %> - CSA Graves
+<% end %>
+
+<%= content_for :head do %>
+<!-- Update your html tag to include the itemscope and itemtype attributes. --> 
+<html itemscope itemtype="http://schema.org/Article">
+
+<!-- Place this data between the <head> tags of your website --> 
+
+
+<!-- Google Authorship and Publisher Markup --> 
+
+<!-- Schema.org markup for Google+ --> 
+<meta itemprop="name" content="<%= @cemetery.name %> - CSA Graves %>"> 
+<meta itemprop="description" content="<%= @cemetery.description.first(150) %>"> 
+<meta itemprop="image" content="<%= image_url(@cemetery.logo)%>"
+
+
+<!-- Open Graph data --> 
+<meta property="og:title" content="<%= @cemetery.name %> - CSA Graves %>" /> 
+<meta property="og:type" content="article" /> 
+<meta property="og:url" content="<%= cemetery_url(@cemetery)%>" />
+<meta property="og:image" content=" <%= image_url(@cemetery.logo)%>" />
+<meta property="og:description" content="<%= @cemetery.description.first(150) %>" /> 
+<meta property="og:site_name" content="CSA Graves" /> 
+
+
+<% end %>
+
 <%- model_class = Cemetery -%>
 
 <hgroup class="mb20">
