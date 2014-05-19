@@ -6,7 +6,7 @@ class Cemetery < ActiveRecord::Base
     friendly_id :name, use: :slugged
 	has_many :plots
 	
-	has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "50x50>" }, :default_url => "/assets/:style/missing.png"
+	has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "50x50>" }, :default_url =>":style/missing.png"
     validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
     after_validation :geocode          # auto-fetch coordinates
 
