@@ -17,8 +17,6 @@
         <h4>Birth Location: <%= @plot.birth_location %></h4>
         <h4>Death: <%= @plot.death_date %></h4>
         <h4>Birth Location: <%= @plot.death_location %></h4>
-        <h4>SCV: <%= link_to @plot.scv_id, "http://cgr.scv.org/vetDetails.php?id="+@plot.scv_id %></h4>
-        <h4>Find A Grave: <%= link_to  @plot.find_a_grave, "http://www.findagrave.com/cgi-bin/fg.cgi?page=gr&GRid="+@plot.find_a_grave %></h4>
         <h4>Mother: <%= @plot.mother %></h4>
         <h4>Father: <%= @plot.father %></h4>
         
@@ -31,7 +29,7 @@
       <div class="col-xs-12 col-sm-12 col-md-3 ">
             <% unless @plot_photo.first == nil%>
             <a href="#" title="Lorem ipsum" class="thumbnail"><%= image_tag @plot_photo.first.photo(:small) %></a>
-            <h4<%= @plot.unit %></h4>
+            <h4><%= @plot.unit %></h4>
           <% else %>
               <%= link_to cemetery_plot_path(@plot.cemetery.id, @plot.id) do %>
               <%= image_tag "original/missing.png" %>
@@ -41,21 +39,68 @@
       </div>
       <span class="clearfix borda"></span>
     </article>
-  <div class="panel">
-      <ul class="nav navbar-inverse nav-pills">
+  
 
-              <% if user_signed_in? %>
-                <% if current_user.has_role? :admin %>
-                  <li><%= link_to "Add Picture", new_cemetery_plot_attachment_path(@cemetery, @plot)%></a></li>
-                  <li><%= link_to "Edit Plot", edit_cemetery_plot_path(@cemetery, @plot)%></li>
-                  <li><%= link_to "Delete", cemetery_plot_path(@cemetery,@plot), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%>
-                <% end %>
-              <% end %>
 
      
-      </ul>
-  </div>
-  </div>
+    
+ 
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">More</h3>
+                    <span class="pull-right">
+                        <!-- Tabs -->
+                        <ul class="nav panel-tabs">
+                            <li class="active"><a href="#photos" data-toggle="tab">Photos</a></li>
+                            <li><a href="#details" data-toggle="tab">Details</a></li>
+                            <li><a href="#links" data-toggle="tab">Links</a></li>
+                             <% if user_signed_in? %>
+                              <% if current_user.has_role? :admin %>
+                                <li><a href="#admin" data-toggle="tab">Admin</a></li>
+                              <% end %>
+                            <% end %>
+                        </ul>
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="photos">
+                        <div id="photo-gal-links">
+                          <% @plot.attachments.each do |attachment| %>
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                              <%= link_to attachment.photo(:original), data: {:gallery=>""} do %>
+                               <%= image_tag attachment.photo(:thumb), :class=> "thumbnail" %> 
+                              <% end %>
+                               
+                            </div> 
+                          
+                          <% end %>
+                          </div>
+
+                        </div>
+                        <div class="tab-pane" id="details">
+                        </div>
+                        <div class="tab-pane" id="links">
+                        <h4>SCV: <%= link_to @plot.scv_id, "http://cgr.scv.org/vetDetails.php?id="+@plot.scv_id %></h4>
+                        <h4>Find A Grave: <%= link_to  @plot.find_a_grave, "http://www.findagrave.com/cgi-bin/fg.cgi?page=gr&GRid="+@plot.find_a_grave %></h4>
+                        <h4>Fold 3: <%= link_to  @plot.fold_3_url %></h4>
+
+                        </div>
+                        <% if user_signed_in? %>
+                              <% if current_user.has_role? :admin %>
+                        <div class="tab-pane" id="admin">
+
+                            
+                                <li><%= link_to "Add Picture", new_cemetery_plot_attachment_path(@cemetery, @plot)%></a></li>
+                                <li><%= link_to "Edit Plot", edit_cemetery_plot_path(@cemetery, @plot)%></li>
+                                <li><%= link_to "Delete", cemetery_plot_path(@cemetery,@plot), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }%></li>
+                         
+                        </div>
+                             <% end %>
+                            <% end %>
+                    </div>
+                </div>
+            </div>
 
 
   <div class="container">
@@ -102,17 +147,7 @@
 </div>
 
 <div class="container">
-  <div id="links">
-  <% @plot.attachments.each do |attachment| %>
-    <div class="col-md-3 col-sm-4 col-xs-6">
-      <%= link_to attachment.photo(:original), data: {:gallery=>""} do %>
-       <%= image_tag attachment.photo(:thumb), :class=> "thumbnail" %> 
-      <% end %>
-       
-    </div> 
   
-  <% end %>
-  </div>
 </div>
 
 
