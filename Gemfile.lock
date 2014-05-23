@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/jumph4x/canonical-rails.git
+  revision: 7c8e44e048faa23de107be7250336a3585e32247
+  specs:
+    canonical-rails (0.0.7)
+      rails (>= 3.1, < 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -182,6 +189,7 @@ DEPENDENCIES
   authority
   awesome_nested_set (~> 3.0.0.rc.3)
   bootstrap-sass
+  canonical-rails!
   coffee-rails (~> 4.0.0)
   devise
   elasticsearch-model
