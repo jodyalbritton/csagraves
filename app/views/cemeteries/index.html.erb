@@ -1,9 +1,9 @@
 <%= content_for :title do %>
  CSA Graves - Cemetery Listing
 <% end %>
+<div class="row bg-dark">
 
-<div class="container" id="searchable-container">
-
+    <div class="col-md-12">
     <hgroup class="mb20">
      <span class="col-md-4 pull-right">
             <input type="search" id="container-search" value="" class="form-control input-md-1" placeholder="Search...">
@@ -16,11 +16,9 @@
       <%= link_to "Add Cemetery", new_cemetery_path %>
 
       <% end %>    
-    <% end %> 
-  
-        
-
+    <% end %>
    </hgroup>
+   </div>
 
     <section class="col-xs-12 col-sm-6 col-md-12">
     <% @cemeteries.each do |cemetery|%>
@@ -49,11 +47,6 @@
         <h4><%= cemetery.full_street_address %></h4>
 
         <p><%=cemetery.description %></p>            
-      <span class="plus">
-      <%= link_to cemetery_path(cemetery) do %>
-        <i class="glyphicon glyphicon-plus"></i></a>
-      <% end %>
-      </span> 
       </div>
       <span class="clearfix borda"></span>
     </article>
@@ -61,12 +54,6 @@
 
   </section>
 </div>
-        
-
-
-
-
-
 <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js">
 
 </script>

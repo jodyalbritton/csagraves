@@ -15,6 +15,8 @@
     <![endif]-->
  
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag params[:controller] %>
+  
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= yield :head %>
   </head>
@@ -25,25 +27,29 @@
   
 
 
-   <div class="container">
- 
-      
-            <%= yield %>
-       
-      
-   
-  </div>
-   
 
-
- 
-  <div class="container">
-            <div class="col-md-12">
-              <div class="footer-copyright"><p>© 2014 CSA Graves. All rights reserved.</p>
-              <p>Web Design and Hosting provided by Optimus Labs <a href="http://getoptimus.com" rel="nofollow" >Get Optimus!</a></p>
+            <div id="wrap">
+              <div class="container clear-top">
+              <%= yield %>
               </div>
             </div>
-          </div>
+              <footer class="footer">
+              <div class="row">
+                <div class="container">
+
+                <p>© 2014 CSA Graves. All rights reserved.</p>
+                <p>Web Design and Hosting provided by Optimus Labs <a href="http://getoptimus.com" rel="nofollow" >Get Optimus!</a></p>
+                </div>
+              </div>
+             </footer>
+      
+   
+
+   
+
+
+
+      
  </body>
 </html>
 

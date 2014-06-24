@@ -8,8 +8,9 @@
 <% @plot_photo = @plot.attachments %>
 
 
-<div class="container">
-        <h1><%= @plot.rank %> <%= @plot.last_name %> <small><%=@plot.first_name%> <%=@plot.middle_name%></small></h1>       
+<div class="row bg-dark">
+  <div class="col-md-12">        
+<h1><%= @plot.rank %> <%= @plot.last_name %> <small><%=@plot.first_name%> <%=@plot.middle_name%></small></h1>       
  <article class="search-result row">
        <div class="col-xs-12 col-sm-12 col-md-4">
 
@@ -23,7 +24,7 @@
          
     
       </div>
-      <div class="col-xs-12 col-sm-12 col-md-5 excerpet">
+      <div class="col-xs-12 col-sm-12 col-md-5 excerpt">
             <p><%= @plot.description %></p>  
       </div>
       <div class="col-xs-12 col-sm-12 col-md-3 ">
@@ -36,7 +37,7 @@
               <% end %>
           <% end %>
        </div>         
-      </div>
+      
       <span class="clearfix borda"></span>
     </article>
   
@@ -103,8 +104,7 @@
             </div>
 
 
-  <div class="container">
-  <div id="blueimp-gallery" class="blueimp-gallery">
+<div id="blueimp-gallery" class="blueimp-gallery">
     <!-- The container for the modal slides -->
     <div class="slides"></div>
     <!-- Controls for the borderless lightbox -->
@@ -140,15 +140,10 @@
 
 
 
-</div>
 
+</div>
  
 
-</div>
-
-<div class="container">
-  
-</div>
 
 
 

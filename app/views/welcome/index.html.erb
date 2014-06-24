@@ -28,8 +28,8 @@
  
 	<%= form_tag(plots_path,  method: "get") do%>
    
-  <div class="container">
-    <div class="row">    
+ <div class="row">
+  <div class="col-md-12">    
     <div class="col-xs-12">
 		<div class="input-group">
           <div class="input-group-btn search-panel">
@@ -54,48 +54,14 @@
         </div>
         </div>
 	</div>
-</div>
+  </div>
+
     <% end %>
 
      
 
 
-<div class="row welcome-menu">
-	<div class="col-md-4">
-	<h3>Recent Cemeteries</h3>
-	<div class="listgroup">
-    <% @recent_cems.each do |cem|%>
-  
-      <%= link_to  cemetery_path(cem), :class=>"list-group-item" do %>
-      <%= cem.name %> <span class="badge pull-right"><%= cem.updated_at.strftime("%d/%m/%Y") %></span>
-      <% end %>
-    
-    <% end %>
 
-	</div>
-  </div>
-	<div class="col-md-4">
-	<h3>Add a Grave</h3>
-	 <%= link_to "Add Listing", cemeteries_path, :class=> "btn btn-primary btn-lg btn-block btn-huge" %>
-   <p> Start by finding the cemetery you would like to add or update a plot listing for. </p>
-
-	</div>
-	<div class="col-md-4">
-	<h3>Recent Listings</h3>
-  <div class="listgroup">
-    <% @listings.each do |listing|%>
-    
-      <%= link_to cemetery_plot_path(listing.cemetery, listing), :class=> "list-group-item" do %>
-  
-      
-          <%= listing.full_name %> <span class="badge"><%= listing.updated_at.strftime("%d/%m/%Y") %></span>
-  
-      <% end %>
-    <% end %>
-     </div>
-  </div>
-	</div>
-</div>
 
 
 <script>

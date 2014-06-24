@@ -2,12 +2,13 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.1'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem "sass-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'sass-rails', github: 'rails/sass-rails'
 gem 'bootstrap-sass'
+gem 'bootswatch-rails'
 gem 'simple_form'
 gem 'acts_as_commentable_with_threading'
   gem "awesome_nested_set", '~> 3.0.0.rc.3'

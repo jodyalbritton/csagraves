@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140511170632) do
+ActiveRecord::Schema.define(version: 20140624143019) do
 
   create_table "attachments", force: true do |t|
     t.string   "title"
@@ -113,6 +113,8 @@ ActiveRecord::Schema.define(version: 20140511170632) do
     t.string   "birth_location"
     t.string   "death_location"
     t.string   "slug"
+    t.string   "enlistment_location"
+    t.string   "disposition"
   end
 
   add_index "plots", ["cemetery_id"], name: "index_plots_on_cemetery_id", using: :btree
