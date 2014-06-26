@@ -32,6 +32,8 @@
 <%- model_class = Cemetery -%>
 
 <div class="row bg-dark">
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              cemeteries_path, :class => 'btn pull-right'  %>
 <hgroup class="col-md-12 mb20">
       <h1><%= @cemetery.name %></h1>
       <h2 class="lead">
@@ -42,6 +44,7 @@
       <%= @cemetery.state %>
       <%= @cemetery.zip %>
       </h2> 
+
 </hgroup>
 <div class='row'>
 <div class="col-md-8">
@@ -52,33 +55,19 @@
 </div>
 
 </div>
-  <div class="row">
-              <div class="col-xs-12 divider text-center">
-                <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2><strong><%= @cemetery.plots.size%></strong></h2>                    
-                    <p><small>Plots</small></p>
-                    <%= link_to  cemetery_plots_path(@cemetery)  do %>
-                    <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> browse </button>
-                    <% end %>
-                </div>
-                <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2><strong><%= @cemetery.comment_threads.size %></strong></h2>                    
-                    <p><small>Comments</small></p>
-                    <button class="btn btn-info btn-block"><span class="fa fa-user"></span> Comment </button>
-                </div>
-                <div class="col-xs-12 col-sm-4 emphasis">
-                  
-                </div>
-            </div>
-
-  </div>
-  <div class="container">
-
-
-    <%= render :partial => 'comments/form'%>
-    <%= render :partial => 'comments/comment', :collection => @comments, :as => :comment%>
-  
-  </div>
+    <div class="col-md-12">
+    <h3>Plots</h3>
+    </div>
+    <% @cemetery.plots.each do |plot| %>
+    <div>
+      <div class="col-md-3">
+      <h4>  <%= plot.plot %></h4>
+      </div>
+      <div class="col-md-9">
+        <h4> <%= link_to plot.full_name, [@cemetery, plot] %> </h4>
+      </div>
+    </div>
+    <% end %>
   </div>
 
 <div class="col-md-4">
@@ -92,8 +81,8 @@
               </ul>
   </div><!--/.well -->
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              cemeteries_path, :class => 'btn'  %>
+  <% if user_signed_in? %>
+  
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_cemetery_path(@cemetery), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -101,6 +90,7 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+<% end %>
 </div>
 </div>
 </div>
