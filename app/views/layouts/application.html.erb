@@ -19,6 +19,8 @@
   
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= yield :head %>
+
+
   </head>
   <body>
   <%= render :partial =>  'layouts/navbar' %>
@@ -28,11 +30,9 @@
 
 
 
-            <div id="wrap">
-              <div class="container clear-top">
+              <div class="container">
               <%= yield %>
               </div>
-            </div>
               <footer class="footer">
               <div class="row">
                 <div class="container">

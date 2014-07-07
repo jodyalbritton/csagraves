@@ -11,12 +11,28 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.fileupload
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require underscore
 //= require gmaps/google
 //= require turbolinks
 
 
 
+ var ready;
+ready = function() {
+
+  $('.datatable').dataTable({
+  "sPaginationType": "bootstrap"
+  })
+
+  
+
+};
+
+
+$(document).on('page:change', ready);

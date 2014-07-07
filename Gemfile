@@ -8,8 +8,7 @@ gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', github: 'rails/sass-rails'
 gem 'bootstrap-sass'
-gem 'bootswatch-rails'
-gem 'simple_form'
+gem 'autoprefixer-rails'
 gem 'acts_as_commentable_with_threading'
   gem "awesome_nested_set", '~> 3.0.0.rc.3'
 gem 'uglifier', '>= 1.3.0'
@@ -22,6 +21,7 @@ gem 'therubyracer',  platforms: :ruby
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -39,6 +39,8 @@ gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 gem 'canonical-rails', github: 'jumph4x/canonical-rails'
+
+gem 'jquery-datatables-rails', '~> 2.1.10.0.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
