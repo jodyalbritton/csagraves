@@ -28,12 +28,13 @@
 
 <div class="tab-content">
   <div class="tab-pane active" id="basic">
-    <div class="form-group">
-    <%= f.label :county, :class =>  'control-label col-md-4 ' %>
+   <div class="form-group">
+    <%= f.label :plot, :class =>  'control-label col-md-4 ' %>
     <div class="controls col-md-4">
-      <%= f.text_field :county, :class => 'text_field form-control input-md' %>
+      <%= f.text_field :plot,:required => true, :class => 'text_field form-control input-md' %>
     </div>
   </div>
+
   <div class="form-group">
     <%= f.label :birth_date, :class =>  'control-label col-md-4 ' %>
     <div class="controls col-md-4">

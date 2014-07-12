@@ -2,8 +2,7 @@ class PlotsController < ApplicationController
   before_action :set_plot, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!,
     :only => [:destroy, :update, :edit, :create, :new]
-   
-
+  authorize_actions_for ApplicationAuthorizer, :except => [:show, :index]
   # GET /plots
   # GET /plots.json
   def index
@@ -56,8 +55,10 @@ class PlotsController < ApplicationController
   # POST /plots
   # POST /plots.json
   def create
+    if user_signed_in?
+      @user = User.find(current_user)
+    end 
     @cemetery = Cemetery.friendly.find(params[:cemetery_id])
-    authorize_action_for(@plot)
 
     @plot = Plot.new(plot_params)
     @plot.cemetery_id = @cemetery.id
@@ -110,6 +111,6 @@ class PlotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plot_params
-      params.require(:plot).permit(:first_name, :middle_name, :last_name, :rank, :birth, :death, :cemetery_id, :created_by_id, :approved, :unit, :description, :spouse, :mother, :father, :find_a_grave)
+      params.require(:plot).permit(:plot,:first_name, :middle_name, :last_name, :rank, :birth, :death, :cemetery_id, :created_by_id, :approved, :unit, :description, :spouse, :mother, :father, :find_a_grave, :scv_id)
     end
 end

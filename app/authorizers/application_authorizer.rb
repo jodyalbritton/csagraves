@@ -11,7 +11,7 @@ class ApplicationAuthorizer < Authority::Authorizer
     user.has_role? :admin
     # 'Whitelist' strategy for security: anything not explicitly allowed is
     # considered forbidden.
-    false
+
   end
 
 end
