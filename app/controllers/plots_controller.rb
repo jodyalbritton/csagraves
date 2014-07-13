@@ -15,7 +15,7 @@ class PlotsController < ApplicationController
 
 
     elsif params[:query]
-      @plots = Plot.search(params[:query]).results
+      @plots = Plot.search(params[:query])
 
 
     else 

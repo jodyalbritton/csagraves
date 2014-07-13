@@ -1,10 +1,6 @@
 class Plot < ActiveRecord::Base
    resourcify
-   include Authority::Abilities
-   include Elasticsearch::Model
-   include Elasticsearch::Model::Callbacks
-   Plot.import
-
+   searchkick
   extend FriendlyId
   friendly_id :full_name, use: :slugged
 

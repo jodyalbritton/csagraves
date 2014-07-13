@@ -82,11 +82,6 @@ GEM
       elasticsearch-transport (= 1.0.4)
     elasticsearch-api (1.0.4)
       multi_json
-    elasticsearch-model (0.1.4)
-      activesupport (> 3)
-      elasticsearch (> 0.4)
-      hashie
-    elasticsearch-rails (0.1.4)
     elasticsearch-transport (1.0.4)
       faraday
       multi_json
@@ -162,6 +157,10 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    searchkick (0.8.0)
+      activemodel
+      elasticsearch (>= 1)
+      hashie
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -206,8 +205,6 @@ DEPENDENCIES
   canonical-rails!
   coffee-rails (~> 4.0.0)
   devise
-  elasticsearch-model
-  elasticsearch-rails
   friendly_id (~> 5.0.0)
   geocoder
   gmaps4rails
@@ -222,6 +219,7 @@ DEPENDENCIES
   rolify
   sass-rails!
   sdoc (~> 0.4.0)
+  searchkick
   simple_form
   spring
   therubyracer

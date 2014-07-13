@@ -22,13 +22,13 @@
 
          <% @plots.each do |plot| %>
           
-         <% @plot_photo = Attachment.where(:imageable_id => plot._source.id) %>
+         <% @plot_photo = Attachment.where(:imageable_id => plot.id) %>
         <article class="search-result row">
           <div class="col-xs-12 col-sm-12 col-md-3">
               <% unless @plot_photo.first == nil%>
                 <a href="#" title="Lorem ipsum" class="thumbnail"><%= image_tag @plot_photo.first.photo(:small) %></a>
               <% else %>
-                  <%= link_to cemetery_plot_path(plot.cemetery_id, plot._source.id) do %>
+                  <%= link_to cemetery_plot_path(plot.cemetery.id, plot.id) do %>
                   <%=image_tag image_path("original/missing.png")%></a>
                   <% end %>
               <% end %>
@@ -38,7 +38,7 @@
             <ul class="meta-search">
               <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.birth_date%></span></li>
               <li><i class="glyphicon glyphicon-calendar"></i> <span><%=plot.death_date%></span></li>
-              <li><i class="glyphicon glyphicon-globe"></i> <span><%= link_to "Plot:" +plot._source.plot+" "+plot._source.cemetery_name, cemetery_plot_path(plot.cemetery_id, plot._source.id) %></span></li>
+              <li><i class="glyphicon glyphicon-globe"></i> <span><%= link_to "Plot:" +plot.plot+" "+plot.cemetery.name, cemetery_plot_path(plot.cemetery_id, plot.id) %></span></li>
               <% if user_signed_in? %>
                 <% if current_user.has_role? :admin %>
                 <li><i class="glyphicon glyphicon-calendar"></i> <span>
@@ -51,7 +51,7 @@
             </ul>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-            <h3><%= link_to plot.last_name, cemetery_plot_path(plot.cemetery_id, plot._source.id) %></h3>
+            <h3><%= link_to plot.last_name, cemetery_plot_path(plot.cemetery_id, plot.id) %></h3>
             <h4><%=plot.first_name%> <%=plot.middle_name%></h4>
             <p><%= plot.description %></p>            
                     
