@@ -15,12 +15,8 @@ class PlotsController < ApplicationController
 
 
     elsif params[:query]
-      if params[:search_param] == "anything" 
-         @plots = Plot.search(params[:query]).results
-      else
-       
-        @plots = Plot.search(params[:search_param]+":"+params[:query]).results
-      end 
+      @plots = Plot.search(params[:query]).results
+
 
     else 
       @plots = Plot.all
