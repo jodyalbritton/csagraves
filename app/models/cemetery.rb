@@ -5,16 +5,19 @@ class Cemetery < ActiveRecord::Base
     extend FriendlyId
     friendly_id :name, use: :slugged
 	has_many :plots
+	after_validation :geocode
 	
-	has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "50x50>" }, :default_url =>":style/missing.png"
+
+    has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "50x50>" }, :default_url =>":style/missing.png"
     validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
-    after_validation 
+
+    def get_geo
             if :latitude != nil 
                 :reverse_geocode
             else 
                 :geocode 
             end
-
+    end
 
     geocoded_by :full_street_address   # can also be an IP address
 
@@ -26,8 +29,8 @@ class Cemetery < ActiveRecord::Base
         obj.zip = geo.postal_code
         obj.state = geo.state
       end
-end
-after_validation :reverse_geocode
+    end
+
     
     def full_street_address 
     	[address, address_two, city, state, zip].compact.join(', ')
