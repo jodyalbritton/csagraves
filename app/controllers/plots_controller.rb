@@ -36,13 +36,13 @@ class PlotsController < ApplicationController
   def new
     @cemetery = Cemetery.friendly.find(params[:cemetery_id])
     @plot = Plot.new
-    authorize_action_for(@plot)
+    
   end
 
   # GET /plots/1/edit
   def edit
      @cemetery = Cemetery.friendly.find(params[:cemetery_id])
-     authorize_action_for(@plot)
+   
 
 
 
@@ -75,7 +75,7 @@ class PlotsController < ApplicationController
   # PATCH/PUT /plots/1.json
   def update
     @cemetery = Cemetery.friendly.find(params[:cemetery_id])
-   authorize_action_for(@plot)
+
 
 
     respond_to do |format|

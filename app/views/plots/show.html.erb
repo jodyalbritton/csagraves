@@ -17,7 +17,7 @@
         <h4>Birth: <%= @plot.birth_date %></h4>
         <h4>Birth Location: <%= @plot.birth_location %></h4>
         <h4>Death: <%= @plot.death_date %></h4>
-        <h4>Birth Location: <%= @plot.death_location %></h4>
+        <h4>Death Location: <%= @plot.death_location %></h4>
         <h4>Mother: <%= @plot.mother %></h4>
         <h4>Father: <%= @plot.father %></h4>
         
@@ -54,9 +54,15 @@
                           <h4>Links</h4>
                         </div>
                         <div class="panel-body">
-                        <h4>SCV: <%= link_to @plot.scv_id, "http://cgr.scv.org/vetDetails.php?id="+@plot.scv_id %></h4>
-                        <h4>Find A Grave: <%= link_to  @plot.find_a_grave, "http://www.findagrave.com/cgi-bin/fg.cgi?page=gr&GRid="+@plot.find_a_grave %></h4>
-                        <h4>Fold 3: <%= link_to  @plot.fold_3_url %></h4>
+                        <% unless @plot.scv_id == nil %>
+                        <h4>SCV: <%= link_to "Link", "http://cgr.scv.org/vetDetails.php?id="+@plot.scv_id %></h4>
+                        <% end %>
+                        <% unless @plot.find_a_grave == nil %>
+                        <h4>Find A Grave: <%= link_to  "Link", "http://www.findagrave.com/cgi-bin/fg.cgi?page=gr&GRid="+@plot.find_a_grave %></h4>
+                        <% end %>
+                        <% unless @plot.fold_3_url == nil %>
+                        <h4>Fold 3: <%= link_to  "Link", @plot.fold_3_url %></h4>
+                        <% end %>
                         </div>
                         </div>
                             <% if user_signed_in? %>
