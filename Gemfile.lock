@@ -5,16 +5,6 @@ GIT
     canonical-rails (0.0.7)
       rails (>= 3.1, < 5.0)
 
-GIT
-  remote: git://github.com/rails/sass-rails.git
-  revision: 3a9e47db7d769221157c82229fc1bade55b580f0
-  specs:
-    sass-rails (4.0.1)
-      railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2)
-      sprockets (~> 2.12)
-      sprockets-rails (~> 2.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -153,7 +143,12 @@ GEM
       json (~> 1.4)
     ref (1.0.5)
     rolify (3.4.0)
-    sass (3.3.10)
+    sass (3.2.19)
+    sass-rails (4.0.3)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.2.0)
+      sprockets (~> 2.8, <= 2.11.0)
+      sprockets-rails (~> 2.0)
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
@@ -165,7 +160,7 @@ GEM
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     spring (1.1.3)
-    sprockets (2.12.1)
+    sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -201,7 +196,7 @@ DEPENDENCIES
   authority
   autoprefixer-rails
   awesome_nested_set (~> 3.0.0.rc.3)
-  bootstrap-sass
+  bootstrap-sass (~> 3.2.0)
   canonical-rails!
   coffee-rails (~> 4.0.0)
   devise
@@ -217,7 +212,7 @@ DEPENDENCIES
   paperclip (~> 4.1)
   rails (= 4.1.2)
   rolify
-  sass-rails!
+  sass-rails (>= 3.2)
   sdoc (~> 0.4.0)
   searchkick
   simple_form

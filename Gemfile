@@ -6,8 +6,8 @@ gem 'rails', '4.1.2'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'sass-rails', github: 'rails/sass-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'sass-rails', '>= 3.2'
 gem 'autoprefixer-rails'
 gem 'acts_as_commentable_with_threading'
   gem "awesome_nested_set", '~> 3.0.0.rc.3'
