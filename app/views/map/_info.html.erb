@@ -1,0 +1,11 @@
+
+<div class="info-window">
+	<div class="info-header">
+		<%= link_to cemetery_path(cemetery) do %>
+			<h4><%= cemetery.name %></h4>
+		<% end %> 
+		<p>Plots: <%=cemetery.plots.size %> </p>
+		<p>About:<p>
+		<p><%= cemetery.description %></p>
+	</div>
+</div>

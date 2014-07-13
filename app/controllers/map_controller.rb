@@ -5,7 +5,7 @@ class MapController < ApplicationController
   			marker.lat cemetery.latitude
   			marker.lng cemetery.longitude
   			marker.title cemetery.name
-  			marker.infowindow  view_context.link_to(cemetery.name, cemetery_path(cemetery))
+  			marker.infowindow render_to_string(:partial => "/map/info", :locals => { :cemetery => cemetery})
 	    end
   end
 end
