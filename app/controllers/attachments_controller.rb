@@ -34,12 +34,11 @@ class AttachmentsController < ApplicationController
   end
   
    def destroy
-    @cemetery = Cemetery.friendly.find(params[:cemetery_id])
     @plot = Plot.friendly.find(params[:plot_id])
     @attachment = Attachment.find(params[:id])
     @attachment.destroy
     respond_to do |format|
-      format.html { redirect_to cemetery_plot_path(@cemetery, @plot) }
+      format.html { redirect_to cemetery_plot_path(@plot.cemetery, @plot) }
       format.json { head :no_content }
     end
   end
