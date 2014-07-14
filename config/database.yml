@@ -4,7 +4,7 @@ development:
    database: example 
    pool: 10 
    username: root 
-   password: ddktx1999 
+   password: <%= ENV["DB_DEV_PASSWORD"] %>
    socket: /var/run/mysqld/mysqld.sock 
    reconnect: true
 
@@ -14,6 +14,6 @@ production:
    database: example 
    pool: 10 
    username: root 
-   password: ddktx1999 
+   password: <%= ENV["DB_PRODUCTION_PASSWORD"] %>
    socket: /var/run/mysqld/mysqld.sock 
    reconnect: true

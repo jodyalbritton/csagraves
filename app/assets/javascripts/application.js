@@ -11,10 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require bootstrap
+//= require bootstrap-sprockets
 //= require jquery.fileupload
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
