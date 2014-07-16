@@ -108,6 +108,9 @@ class PlotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plot_params
-      params.require(:plot).permit(:plot,:first_name, :middle_name, :last_name, :rank, :birth, :death, :cemetery_id, :created_by_id, :approved, :unit, :description, :spouse, :mother, :father, :find_a_grave, :scv_id)
+      params.require(:plot).permit(:plot,:first_name, :middle_name, :last_name, :rank, :birth_date, 
+        :death_date, :birth_location, :death_location,  :cemetery_id, :created_by_id, :approved, 
+        :unit, :description, :spouse, :mother, :father, :find_a_grave, :scv_id, :fold_3_url, :rank, 
+        :enlistment_date,:service_end_date,:release_from_service,:ancestry_com_url,:disposition)
     end
 end
