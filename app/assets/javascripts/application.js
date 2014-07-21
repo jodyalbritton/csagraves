@@ -14,10 +14,11 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require jquery.fileupload
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
-//= require underscore
+//= require attachments
 //= require gmaps/google
 //= require turbolinks
 
@@ -35,4 +36,3 @@ ready = function() {
 };
 
 
-$(document).on('page:change', ready);

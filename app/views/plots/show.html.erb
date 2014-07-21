@@ -93,11 +93,7 @@
 
                           <div class="panel panel-default">
                           <div class="panel-heading">
-                              <%= link_to new_cemetery_plot_attachment_path(@cemetery, @plot), :class=> "btn btn-primary pull-right" do %>
-                        
-                                  <i class="glyphicon glyphicon-camera"></i>
-                                  <span><strong>Add Photo</strong></span>       
-                              <% end %>
+                              <button class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#newAttachment">Add Attachments</button>
                               <h4>Photos</h4>
                           </div>
                           <div class="panel-body">
@@ -153,7 +149,28 @@
 
 
 
+<!-- 5. $DEFAULT_MODAL =============================================================================
 
+        Default modal
+-->
+        <!-- Modal -->
+        <div id="newAttachment" class="modal fade" tabindex="-1" role="dialog" style="display: none;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">New Photo</h4>
+              </div>
+              <div class="modal-body">
+                  <%= render "attachments/form" %>
+              </div> <!-- / .modal-body -->
+            </div> <!-- / .modal-content -->
+          </div> <!-- / .modal-dialog -->
+        </div> <!-- /.modal -->
+        <!-- / Modal -->
+
+       
+<!-- /5. $DEFAULT_MODAL -->
  
 
 

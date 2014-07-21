@@ -43,6 +43,7 @@ gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 
 gem 'jquery-datatables-rails', '~> 2.1.10.0.2'
 
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -55,4 +56,4 @@ gem 'jquery-datatables-rails', '~> 2.1.10.0.2'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'jquery.fileupload-rails'
+gem 'jquery-fileupload-rails'

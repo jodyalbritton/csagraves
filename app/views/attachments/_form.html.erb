@@ -1,46 +1,28 @@
-<div class="container">
-  <h2>Upload file</h2>
-  <%= form_for ([@cemetery, @plot, @attachment]), :html => { :multipart => true, :id => "fileupload"} do |f| %>
-    <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-    <div class="row fileupload-buttonbar">
-      <div class="span7">
-        <!-- The fileinput-button span is used to style the file input field as button -->
-        <span class="btn btn-success fileinput-button">
-          <i class="icon-plus icon-white"></i>
-          <span>Add files...</span>
-          <%= f.file_field :photo %>
-           <%= hidden_field_tag :imageable_id, @plot.id %>
-          <%= hidden_field_tag :imageable_type, @plot.class %>
+<% @attachment = @plot.attachments.new %> 
+  <%= form_for ([@cemetery, @plot, @attachment]), :class=> "form-horizontal panel", :html => { :multipart => true} do |f| %>
+  <div class="panel-body">
+  <% if @attachment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attachment.errors.count, "error") %> prohibited this attachment from being saved:</h2>
 
-        </span>
-        <button type="submit" class="btn btn-primary start">
-          <i class="icon-upload icon-white"></i>
-          <span>Start upload</span>
-        </button>
-        <button type="reset" class="btn btn-warning cancel">
-          <i class="icon-ban-circle icon-white"></i>
-          <span>Cancel upload</span>
-        </button>
-        <button type="button" class="btn btn-danger delete">
-          <i class="icon-trash icon-white"></i>
-          <span>Delete</span>
-        </button>
-        <input type="checkbox" class="toggle">
-      </div>
-      <div class="span5">
-        <!-- The global progress bar -->
-        <div class="progress progress-success progress-striped active fade">
-          <div class="bar" style="width:0%;"></div>
-        </div>
-      </div>
+      <ul>
+        <% @attachment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </div>
-    <!-- The loading indicator is shown during image processing -->
-    <div class="fileupload-loading"></div>
-    <br>
-    <!-- The table listing the files available for upload/download -->
-    <table class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
-    </table>
   <% end %>
 
-</div>
+  
+    
+    <%= f.file_field :photo, multiple: true, name: 'attachment[photo]', :hint=> "You can select multiple files" %>
+   
+  </div>
+  <div class="panel-footer text-right actions">
+     <%= f.submit "save", class: 'btn' %>
+  </div>
+<% end %>
+
+<% # jquery upload template # %>
+<script id="template-upload" type="text/x-tmpl"><div class="upload">{%=o.name%}<div class="progress"><div class="progress-bar bar" style="width: 0%"></div></div></div></script>
 
