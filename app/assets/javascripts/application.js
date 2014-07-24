@@ -24,15 +24,14 @@
 
 
 
- var ready;
+var ready;
 ready = function() {
 
   $('.datatable').dataTable({
   "sPaginationType": "bootstrap"
   })
-
-  
-
 };
 
+$(document).ready(ready);
+$(document).on('page:ready', ready);
 
