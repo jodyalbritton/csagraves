@@ -39,6 +39,7 @@ gem 'simple_form'
 gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
+gem 'thin', group: :development
 gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 
 gem 'jquery-datatables-rails', '~> 2.1.10.0.2'

@@ -1,96 +1,53 @@
 <%= content_for :title do %>
  CSA Graves - Cemetery Listing
 <% end %>
-<div class="row bg-dark">
 
-    <div class="col-md-12">
-    <hgroup class="mb20">
-     <span class="col-md-4 pull-right">
-            <input type="search" id="container-search" value="" class="form-control input-md-1" placeholder="Search...">
-    </span>
-    <h1>Cemetery Listings</h1>
-       
-    <h2 class="lead"><strong class="text-danger"><%= @cemeteries.count %></strong> can be found in our <strong class="text-danger">database</strong></h2>
-    <% if user_signed_in? %>
-      <% if current_user.has_role? :admin %>
-      <%= link_to "Add Cemetery", new_cemetery_path %>
+<div class="main-block real-estate">
 
-      <% end %>    
-    <% end %>
-   </hgroup>
-   </div>
+<div class="container">
+  <div class="rs-property">
+  <div class="row">
+         <% @cemeteries.each do |cemetery|%>
+              <div class="col-md-4 col-sm-4">
+                <!-- Real estate property item -->
+                <div class="property-item">
+                  <div class="img-container">
+                    <!-- Product Image -->
+                      <%= image_tag cemetery.logo(:medium), :class=> "img-responsive" %>
+                    <span class="hover-top bg-color"><%= cemetery.city %></span>
+                    <span class="hover-bottom bg-red"><%= cemetery.plots.count %> Graves</a></span>
+                  </div>
+                  <!-- product title -->
+                  <h4><%= link_to cemetery.name, cemetery_path(cemetery) %></h4>
+                  <!-- product details -->
+                  <div class="property-details">
+                    <%= link_to "More Details", cemetery_path(cemetery), :class=> "ecom pull-right" %>
+                    
+                    <!-- price -->
+                    <span class="price pull-left"></span>
+                    <div class="clearfix"></div>
+                  </div>
+                  <!-- Info -->
+                  <div class="p-info">
+                    <%= link_to "Browse", cemetery_plots_path(cemetery)%>
+                    <% if user_signed_in? %>
+                            <% if current_user.has_role? :admin %>
+                             <%= link_to "edit", edit_cemetery_path(cemetery)%>
 
-    <section class="col-xs-12 col-sm-6 col-md-12" id="searchable-container">
-    <% @cemeteries.each do |cemetery|%>
-    <article class="search-result row">
-      <div class="col-xs-12 col-sm-12 col-md-3">
-       <%= link_to cemetery_plots_path(cemetery), :class=> "thumbnail" do %>
-       <%= image_tag cemetery.logo(:medium) %>
-       <%end%>
+                            <% end %>    
+                    <% end %> 
+                    <div class="clearfix"></div>
+                  </div>
+                  <!-- Property Details List -->
+                  <ul class="list-3">
+                     
+                          
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+            </div>
+            <% end %>
       </div>
-      <div class="col-xs-12 col-sm-12 col-md-2">
-        <ul class="meta-search">
-        
-          <li><i class="glyphicon glyphicon-info-sign"></i> <span><%= cemetery.plots.count %> Graves</span></li>
-          <li><i class="glyphicon glyphicon-circle-arrow-right"></i> <span><%= link_to "More Details", cemetery_path(cemetery)%></span></li>
-          <li><i class="glyphicon glyphicon-search"></i> <span><%= link_to "Browse Graves", cemetery_plots_path(cemetery)%></span></li>
-            <% if user_signed_in? %>
-              <% if current_user.has_role? :admin %>
-               <li><i class="glyphicon glyphicon-pencil"></i> <span><%= link_to "edit", edit_cemetery_path(cemetery)%></span></li>
-
-              <% end %>    
-            <% end %>  
-        </ul>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-        <h3><%= link_to cemetery.name, cemetery_path(cemetery) %></h3>
-        <h4><%= cemetery.full_street_address %></h4>
-
-        <p><%=cemetery.description %></p>            
-      </div>
-      <span class="clearfix borda"></span>
-    </article>
-    <% end %>
-
-  </section>
 </div>
-<script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js">
-
-</script>
-
-
-
-
-
-
-
-
-<script>
-  $(function () {
-    $( '#table' ).searchable({
-        striped: true,
-        oddRow: { 'background-color': '#f5f5f5' },
-        evenRow: { 'background-color': '#fff' },
-        searchType: 'fuzzy'
-    });
-    
-    $( '#searchable-container' ).searchable({
-        searchField: '#container-search',
-        selector: '.row',
-        childSelector: '.col-xs-12',
-        show: function( elem ) {
-            elem.slideDown(100);
-        },
-        hide: function( elem ) {
-            elem.slideUp( 100 );
-        }
-    })
-});
-</script>
-        
-        
-        
-        
-        
-      
-  
+</div>
+</div>

@@ -22,34 +22,47 @@
 
 
   </head>
-  <body>
-  <%= render :partial =>  'layouts/navbar' %>
+  <body  class="boxed img-1">
+    <div class="outer">
+    <%= render :partial =>  'layouts/navbar' %>
 
 
   
 
 
-
               <div class="container">
               <%= yield %>
               </div>
-              <footer class="footer">
-              <div class="row">
-                <div class="container">
-
-                <p>© 2014 CSA Graves. All rights reserved.</p>
-                <p>Web Design and Hosting provided by Optimus Labs <a href="http://getoptimus.com" rel="nofollow" >Get Optimus!</a></p>
-                </div>
-              </div>
-             </footer>
+              
+        <footer>
+        <!-- Container -->
+        <div class="container">
+          <!-- Footer Content -->
+            <!-- Paragraph -->
+            <p class="pull-left">Copyright &copy; 2014 - <a href="#">2014 CSA Graves. All rights reserved.</a> Web Design and Hosting provided by Optimus Labs <a href="http://getoptimus.com" rel="nofollow" >Get Optimus!</a></p>
+            <ul class="list-inline pull-right">
+              <!-- List -->
+              <li><a href="index.html">Home</a><li>
+              <li><a href="service.html">Service</a></li>
+              <li><a href="feature.html">Features</a></li>
+              <li><a href="about-us.html">About</a></li>
+              <li><a href="contact-us.html">Contact</a></li>
+            </ul>
+            <!-- Clearfix -->
+            <div class="clearfix"></div>
+        </div>
+      </footer>
       
+      <!-- Footer Ends -->
+
+            
    
 
    
 
 
 
-      
+   </div>
  </body>
 </html>
 
