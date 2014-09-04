@@ -19,8 +19,13 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require attachments
-//= require underscore
 //= require gmaps/google
+//= require jquery.magnific-popup.min
+//= require jquery.flexslider-min
+//= require mgmenu
+//= require mgmenu_plugins
+//= requure respond.min
+//= require main
 //= require turbolinks
 
 

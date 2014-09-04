@@ -2141,7 +2141,7 @@ body.boxed.img-2 {
 	background-size: cover;
 }
 body.boxed.img-3 {
-	background: #ffffff url("../../img/body/img/3.jpg") repeat;
+	background: #ffffff url(<%= asset_path "3.jpg" %>) repeat;
 	background-attachment: fixed;
 	background-size: cover;
 }
@@ -5975,7 +5975,7 @@ body.boxed.img-5 {
 }
 /* Quote two */
 .quote-two{
-	background:url("../../img/raster.png"),url("../../img/backgrounds/3.jpg") center center;
+	background:url(<%= asset_path "raster.png"%>),url(<%= asset_path "3.jpg") center center;
 	background-attachment:fixed;
 }
 .quote-two .quote-two-content{

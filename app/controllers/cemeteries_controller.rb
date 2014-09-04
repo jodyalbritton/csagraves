@@ -75,6 +75,6 @@ class CemeteriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cemetery_params
-      params.require(:cemetery).permit(:name, :address, :address_two, :city, :state, :zip, :url, :phone, :description, :logo,:latitude, :longitude)
+      params.require(:cemetery).permit(:name, :address, :address_two, :city, :state, :zip, :url, :phone, :description, :logo,:latitude, :longitude, :county)
     end
 end

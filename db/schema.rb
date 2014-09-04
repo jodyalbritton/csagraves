@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624143019) do
+ActiveRecord::Schema.define(version: 20140904065617) do
 
   create_table "attachments", force: true do |t|
     t.string   "title"
@@ -46,9 +46,10 @@ ActiveRecord::Schema.define(version: 20140624143019) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.float    "latitude",          limit: 24
+    t.float    "longitude",         limit: 24
     t.string   "slug"
+    t.string   "county"
   end
 
   add_index "cemeteries", ["slug"], name: "index_cemeteries_on_slug", unique: true, using: :btree

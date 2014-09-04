@@ -14,7 +14,7 @@
                   <div class="img-container">
                     <!-- Product Image -->
                       <%= image_tag cemetery.logo(:medium), :class=> "img-responsive" %>
-                    <span class="hover-top bg-color"><%= cemetery.city %></span>
+                    <span class="hover-top bg-color"><%= cemetery.city %> - <%= cemetery.county %> County </span>
                     <span class="hover-bottom bg-red"><%= cemetery.plots.count %> Graves</a></span>
                   </div>
                   <!-- product title -->
@@ -32,7 +32,7 @@
                     <%= link_to "Browse", cemetery_plots_path(cemetery)%>
                     <% if user_signed_in? %>
                             <% if current_user.has_role? :admin %>
-                             <%= link_to "edit", edit_cemetery_path(cemetery)%>
+                             <%= link_to "Edit", edit_cemetery_path(cemetery)%>
 
                             <% end %>    
                     <% end %> 
