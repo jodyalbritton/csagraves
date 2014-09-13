@@ -6,22 +6,28 @@
 
 <div class="container">
   <div class="rs-property">
-  <div class="row">
-         <% @cemeteries.each do |cemetery|%>
+
+<% @cemeteries.in_groups_of(3) do |group| %>
+  <div class ="row">
+      <% group.each do |cemetery|%>
+          <% if cemetery %>
+            
               <div class="col-md-4 col-sm-4">
                 <!-- Real estate property item -->
                 <div class="property-item">
                   <div class="img-container">
                     <!-- Product Image -->
+                      <%= link_to cemetery_path(cemetery) do %>
                       <%= image_tag cemetery.logo(:medium), :class=> "img-responsive" %>
+                      <% end %>
                     <span class="hover-top bg-color"><%= cemetery.city %> <% if cemetery.county %>- <%= cemetery.county %> County <% end %> </span>
-                    <span class="hover-bottom bg-red"><%= cemetery.plots.count %> Graves</a></span>
+                    <span class="hover-bottom bg-red"><%= cemetery.plots.count %> Graves</span>
                   </div>
                   <!-- product title -->
                   <h4><%= link_to cemetery.name, cemetery_path(cemetery) %></h4>
                   <!-- product details -->
-                  <div class="property-details">
-                    <%= link_to "More Details", cemetery_path(cemetery), :class=> "ecom pull-right" %>
+                  <div class="property-details text-center">
+                    <%= link_to "Confederate Veteran Graves", cemetery_path(cemetery), :class=> "ecom" %>
                     
                     <!-- price -->
                     <span class="price pull-left"></span>
@@ -46,8 +52,13 @@
                   <div class="clearfix"></div>
                 </div>
             </div>
-            <% end %>
-      </div>
+          <% end %>
+      <% end %>
+
+    </div>     
+<% end %>
+
+
 </div>
 </div>
 </div>
