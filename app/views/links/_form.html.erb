@@ -1,0 +1,27 @@
+<% @link = @plot.links.new %> 
+  <%= form_for ([@cemetery, @plot, @link]), :class=> "form-horizontal panel", :html => { :multipart => true} do |f| %>
+  <div class="panel-body">
+  <% if @link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
+
+      <ul>
+        <% @link.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title, :class=> "form-control", :required => "true" %>
+    <%= f.label :url %>
+    <%= f.text_field :url, :class=> "form-control", :required => "true" %>
+    <%= f.label :description %>
+    <%= f.text_area :description, :class=> "form-control" %>
+   
+  </div>
+  <div class="panel-footer text-right">
+     <%= f.submit "save", class: 'btn btn-primary' %>
+  </div>
+<% end %>

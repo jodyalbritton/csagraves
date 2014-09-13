@@ -7,7 +7,8 @@
 <% end %>
 <% @plot_photo = @plot.attachments %>
 
-  <div class="row">
+ <div class="main-block">
+ <div class="row">
       <div class="col-md-9"> 
       <h1><%= @plot.rank %> <%= @plot.last_name %> <small><%=@plot.first_name%> <%=@plot.middle_name%></small></h1> 
       </div>
@@ -63,35 +64,7 @@
   
 
 
-     
-    
- 
-
-              
-          
-                        <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h4>Links</h4>
-                        </div>
-                        <div class="panel-body">
-                        <% unless @plot.scv_id == nil %>
-                        <h4>SCV: <%= link_to "Link", "http://cgr.scv.org/vetDetails.php?id="+@plot.scv_id %></h4>
-                        <% end %>
-                        <% unless @plot.find_a_grave == nil %>
-                        <h4>Find A Grave: <%= link_to  "Link", "http://www.findagrave.com/cgi-bin/fg.cgi?page=gr&GRid="+@plot.find_a_grave %></h4>
-                        <% end %>
-                        <% unless @plot.fold_3_url == nil %>
-                        <h4>Fold 3: <%= link_to  "Link", @plot.fold_3_url %></h4>
-                        <% end %>
-                        </div>
-                        </div>
-                           
-        
-                               
-                  
-          
-
-                          <div class="panel panel-default">
+                      <div class="panel panel-grey">
                           <div class="panel-heading">
                              <% if user_signed_in? %>
                                 <% if current_user.has_role? :admin %>
@@ -116,6 +89,66 @@
                           <% end %>
                           </div>
                         </div>
+                          <div class="panel panel-grey">
+                            <div class="panel-heading">
+                                <h4>Service Records</h4>
+                            </div>
+                            <div class="panel-body">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <h4> Date Entered: <%= @plot.enlistment_date %></h4>
+                                  <h4> Enlistment Location: <%= @plot.enlistment_location %></h4>
+                                  <h4> Date Service Ended: <%= @plot.service_end_date %></h4>
+                                  <h4> Place of Death: <%= @plot.death_location %></h4>
+                                </div>
+                                <div class="col-md-6">
+                                  <h4> Disposition: </h4>
+                                  <p> <%= @plot.disposition%></p>
+                                  <h4> Rank <%= @plot.rank %></h4>
+
+                                </div>
+                              </div>
+                            </div> 
+                          </div>
+                        </div>
+ 
+
+              
+          
+                        <div class="panel panel-grey">
+                        <div class="panel-heading">
+                          <% if user_signed_in? %>
+                                <% if current_user.has_role? :admin %>
+                                  <button class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#newLink">Add Links</button>
+                                <% end %>
+                              <% end %>
+                          <h4>Links</h4>
+
+                        </div>
+                        <div class="panel-body">
+                        <% unless @plot.scv_id == nil %>
+                        <h4>SCV: <%= link_to "Link", "http://cgr.scv.org/vetDetails.php?id="+@plot.scv_id %></h4>
+                        <% end %>
+                        <% unless @plot.find_a_grave == nil %>
+                        <h4>Find A Grave: <%= link_to  "Link", "http://www.findagrave.com/cgi-bin/fg.cgi?page=gr&GRid="+@plot.find_a_grave %></h4>
+                        <% end %>
+                        <% unless @plot.fold_3_url == nil %>
+                        <h4>Fold 3: <%= link_to  "Link", @plot.fold_3_url %></h4>
+                        <% end %>
+
+                        <% @plot.links.each do |link| %>
+                        <h4><%= link.title %>: <%= link_to  "Link", link.url %></h4>
+                        <% end %>
+
+                        </div>
+                        </div>
+                           
+        
+                               
+                  
+          
+
+                         
 
 <div id="blueimp-gallery" class="blueimp-gallery">
     <!-- The container for the modal slides -->
@@ -151,6 +184,7 @@
     </div>
 </div>
 
+ </div>
 
 
 <!-- 5. $DEFAULT_MODAL =============================================================================
@@ -176,6 +210,28 @@
        
 <!-- /5. $DEFAULT_MODAL -->
  
+ <!-- 5. $DEFAULT_MODAL =============================================================================
+
+        Default modal
+-->
+        <!-- Modal -->
+        <div id="newLink" class="modal fade" tabindex="-1" role="dialog" style="display: none;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">New Link</h4>
+              </div>
+              <div class="modal-body">
+                  <%= render "links/form" %>
+              </div> <!-- / .modal-body -->
+            </div> <!-- / .modal-content -->
+          </div> <!-- / .modal-dialog -->
+        </div> <!-- /.modal -->
+        <!-- / Modal -->
+
+       
+<!-- /5. $DEFAULT_MODAL -->
 
 
 

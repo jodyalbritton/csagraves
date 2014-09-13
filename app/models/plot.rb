@@ -10,6 +10,7 @@ class Plot < ActiveRecord::Base
 
 
   has_many :attachments, as: :imageable 
+  has_many :links
 
   def full_name 
     self.first_name+" "+self.middle_name+" "+self.last_name

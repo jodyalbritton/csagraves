@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :attachments
 
  
- resources :plots, :only => [:index]
+ resources :plots, :only => [:index] 
  resources :comments, :only => [:create, :destroy]
 
 
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :cemeteries do 
     resources :plots do 
       resources :attachments
+      resources :links
     end 
   end
 
