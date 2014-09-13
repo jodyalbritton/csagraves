@@ -14,7 +14,7 @@
                   <div class="img-container">
                     <!-- Product Image -->
                       <%= image_tag cemetery.logo(:medium), :class=> "img-responsive" %>
-                    <span class="hover-top bg-color"><%= cemetery.city %> - <%= cemetery.county %> County </span>
+                    <span class="hover-top bg-color"><%= cemetery.city %> <% if cemetery.county %>- <%= cemetery.county %> County <% end %> </span>
                     <span class="hover-bottom bg-red"><%= cemetery.plots.count %> Graves</a></span>
                   </div>
                   <!-- product title -->
