@@ -1,10 +1,11 @@
 class CemeteriesController < ApplicationController
     before_filter :authenticate_user!,
     :only => [:destroy, :update, :edit, :create, :new]
-
+    
   
   before_action :set_cemetery, only: [:show, :edit, :update, :destroy]
- 
+    add_breadcrumb "Home", :root_path
+    add_breadcrumb "Cemeteries", :cemeteries_path
   # GET /cemeteries
   # GET /cemeteries.json
   def index
@@ -14,6 +15,7 @@ class CemeteriesController < ApplicationController
   # GET /cemeteries/1
   # GET /cemeteries/1.json
   def show
+        add_breadcrumb @cemetery.name, cemetery_path(@cemetery)
         @comments = @cemetery.comment_threads.order('created_at desc')
         @new_comment = Comment.build_from(@cemetery, current_user, "")
   end

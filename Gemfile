@@ -8,6 +8,7 @@ gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'sass-rails', '>= 3.2'
+gem 'font-awesome-sass', '~> 4.2.0'
 gem 'autoprefixer-rails'
 gem 'acts_as_commentable_with_threading'
   gem "awesome_nested_set", '~> 3.0.0.rc.3'
@@ -27,7 +28,7 @@ gem "figaro"
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
-
+gem 'breadcrumbs_on_rails'
 gem 'devise'
 gem 'authority'
 gem 'rolify'
