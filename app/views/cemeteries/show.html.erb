@@ -51,7 +51,7 @@
   
 
 
-<div class="panel panel-default">
+<div class="panel panel-grey">
   <div class="panel-heading">
     <h3 class="panel-title">Plots</h3>
   </div>
@@ -107,3 +107,12 @@
 </div>
 </div>
 </div>
+
+
+<script>
+$(document).on('page:change', function () {
+  $('.datatable').dataTable({
+  "sPaginationType": "bootstrap"
+  })
+});
+</script>
