@@ -7,10 +7,10 @@
 <% end %>
 <% @plot_photo = @plot.attachments %>
 
- <div class="main-block">
+ <div class="container">
  <div class="row">
       <div class="col-md-9"> 
-      <h1><%= @plot.rank %> <%= @plot.last_name %> <small><%=@plot.first_name%> <%=@plot.middle_name%></small></h1> 
+      <h1><%= @plot.rank %> <%=@plot.first_name%> <%=@plot.middle_name%> <%= @plot.last_name %></h1> 
       </div>
       <div class="col-md-2">
       <% if user_signed_in? %>
@@ -110,12 +110,7 @@
                               </div>
                             </div> 
                           </div>
-                        </div>
- 
-
-              
-          
-                        <div class="panel panel-grey">
+                                                  <div class="panel panel-grey">
                         <div class="panel-heading">
                           <% if user_signed_in? %>
                                 <% if current_user.has_role? :admin %>
@@ -143,6 +138,12 @@
                         </div>
                         </div>
                            
+                        </div>
+ 
+
+              
+          
+
         
                                
                   
