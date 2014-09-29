@@ -18,6 +18,12 @@ class CemeteriesController < ApplicationController
         add_breadcrumb @cemetery.name, cemetery_path(@cemetery)
         @comments = @cemetery.comment_threads.order('created_at desc')
         @new_comment = Comment.build_from(@cemetery, current_user, "")
+        @hash = Gmaps4rails.build_markers(@cemetery) do |cemetery, marker|
+          marker.lat cemetery.latitude
+          marker.lng cemetery.longitude
+          marker.title cemetery.name
+          marker.infowindow render_to_string(:partial => "/map/info", :locals => { :cemetery => cemetery})
+        end
   end
 
   # GET /cemeteries/new
