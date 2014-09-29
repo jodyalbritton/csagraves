@@ -17,17 +17,17 @@
                 <div class="property-item">
                   <div class="img-container">
                     <!-- Product Image -->
-                      <%= link_to cemetery_path(cemetery) do %>
+                      <%= link_to cemetery_path(cemetery), data: { no_turbolink: true } do %>
                       <%= image_tag cemetery.logo(:medium), :class=> "img-responsive" %>
                       <% end %>
                     <span class="hover-top bg-color"><%= cemetery.city %> <% if cemetery.county %>- <%= cemetery.county %> County <% end %> </span>
                     <span class="hover-bottom bg-red"><%= cemetery.plots.count %> Graves</span>
                   </div>
                   <!-- product title -->
-                  <h4><%= link_to cemetery.name, cemetery_path(cemetery) %></h4>
+                  <h4><%= link_to cemetery.name, cemetery_path(cemetery), data: { no_turbolink: true } %></h4>
                   <!-- product details -->
                   <div class="property-details text-center">
-                    <%= link_to "Confederate Veteran Graves", cemetery_path(cemetery), :class=> "ecom" %>
+                    <%= link_to "Confederate Veteran Graves", cemetery_path(cemetery), :class=> "ecom", data: { no_turbolink: true } %>
                     
                     <!-- price -->
                     <span class="price pull-left"></span>
@@ -35,7 +35,7 @@
                   </div>
                   <!-- Info -->
                   <div class="p-info">
-                    <%= link_to "Browse", cemetery_plots_path(cemetery)%>
+                    <%= link_to "Browse", cemetery_plots_path(cemetery), data: { no_turbolink: true }%>
                     <% if user_signed_in? %>
                             <% if current_user.has_role? :admin %>
                              <%= link_to "Edit", edit_cemetery_path(cemetery)%>
